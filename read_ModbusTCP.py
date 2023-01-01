@@ -2,7 +2,7 @@ from pyModbusTCP.client import ModbusClient
 import random
 
 # TCP auto connect on first modbus request
-c = ModbusClient(host="localhost", port=502, unit_id=1, auto_open=True)
+# c = ModbusClient(host="localhost", port=502, unit_id=1, auto_open=True)
 # TCP auto connect on modbus request, close after it
 c = ModbusClient(host="10.0.0.1", port=502, auto_open=True, auto_close=True)
 # SP NOISE POMPA & DRAIN VALVE
@@ -26,10 +26,10 @@ while True:
     # READ FEEDBACK SIGNAL-----------------
     regs = c.read_holding_registers(8,8) #format: (address,quantity). quantity gabole lebih, tapi boleh kurang
     bit_flow = regs[0]
-    volt_flow = (bit_flow - 32767)*10/65535
+    volt_flow = (bit_flow - 32767)*10/65535 # RUMUS INI SALAH
 
     bit_level = regs[1]
-    volt_level = (bit_level - 32767) * 10 / 65535
+    volt_level = (bit_level - 32767) * 10 / 65535 # RUMUS INI SALAH
 
     # CONTROLLER OUTER LOOP/LEVEL
 
@@ -37,7 +37,7 @@ while True:
     # CONTROLLER INNER LOOP/FLOW
 
     # SEND CONTROL SIGNAL------------------
-    sent = c.write_multiple_registers(16, [0, 0])  # list bit pompa dan valve max.4096
+    sent = c.write_multiple_registers(16, [0, 4096])  # list bit pompa dan valve max.4096
 
     print(bit_dist_pompa)
     # volt = (regs[0] - 32767)*10/65535
