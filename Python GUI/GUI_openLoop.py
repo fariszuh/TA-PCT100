@@ -19,7 +19,7 @@ def plot_data():
         elapse = int(end - start_time)
         #data=[]
         if not elapse == elapse_last:
-            print("elapse = elapse last")
+            print("elapse = elapse last, sudah bisa masuk")
             arr_elapse.append(elapse)
             volt_level = kontroller(elapse)
             arr_volt_level.append(volt_level)
