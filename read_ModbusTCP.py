@@ -26,10 +26,10 @@ while True:
     # READ FEEDBACK SIGNAL-----------------
     regs = c.read_holding_registers(8,8) #format: (address,quantity). quantity gabole lebih, tapi boleh kurang
     bit_flow = regs[0]
-    volt_flow = (bit_flow - 32767)*10/65535 # RUMUS INI SALAH
+    volt_flow = 20 * bit_flow / 65535 - 10
 
     bit_level = regs[1]
-    volt_level = (bit_level - 32767) * 10 / 65535 # RUMUS INI SALAH
+    volt_level = 20 * bit_level / 65535 - 10
 
     # CONTROLLER OUTER LOOP/LEVEL
 

@@ -7,7 +7,7 @@ from pyModbusTCP.client import ModbusClient
 import random
 c = ModbusClient(host="10.0.0.1", port=502, auto_open=True, auto_close=True)
 
-header = ['time','voltage','elapse']
+header = ['n', 'volt_flow', 'volt_level', 'volt_pot', 'timeNow']
 f = open('dataRafif.csv', 'w', encoding='UTF8', newline='') # open the file in the write mode
 writer = csv.writer(f) # create the csv writer
 writer.writerow(header) # write the header
@@ -25,7 +25,7 @@ def plot_data():
             n = n + 1
             print("timeLast sudah bisa masuk")
             arr_n.append(n)
-            volt_level = kontroller()
+            volt_flow,volt_level,volt_pot = kontroller()
             arr_volt_level.append(volt_level)
 
             timeLast = timeNow
@@ -35,7 +35,7 @@ def plot_data():
             lines.set_xdata(arr_n)
             lines.set_ydata(arr_volt_level)
             # write multiple rows
-            writer.writerow([n, volt_level, timeNow])
+            writer.writerow([n, volt_flow, volt_level, volt_pot, timeNow])
             print(arr_n)
             print(arr_volt_level)
             canvas.draw()
@@ -58,7 +58,7 @@ def plot_stop():
     f.close()
 
 def kontroller():
-    global volt_flow,volt_level
+    global volt_flow,volt_level,volt_pot
     regs = c.read_holding_registers(8, 8)  # format: (address,quantity). quantity gabole lebih, tapi boleh kurang
     bit_flow = regs[0]
     volt_flow = 20*bit_flow/65535 - 10
@@ -66,7 +66,10 @@ def kontroller():
     bit_level = regs[1]
     volt_level = 20*bit_level/65535 - 10
 
-    return volt_level
+    bit_pot = regs[2]
+    volt_pot = 20 * bit_pot / 65535 - 10
+
+    return volt_flow,volt_level,volt_pot
 
 cond = False
 timeLast = 0
