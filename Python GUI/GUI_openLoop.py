@@ -26,6 +26,7 @@ def plot_data():
             print("timeLast sudah bisa masuk")
             arr_n.append(n)
             volt_flow,volt_level,volt_pot = kontroller()
+
             arr_volt_level.append(volt_level)
 
             timeLast = timeNow
