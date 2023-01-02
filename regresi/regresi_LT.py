@@ -14,5 +14,7 @@ voltOutput_LT[1] = 8.906538490882735
 m = (level_sebenarnya[1] - level_sebenarnya[0])/(voltOutput_LT[1] - voltOutput_LT[0])
 # c = y1 - m*x1
 c = level_sebenarnya[0] - m*voltOutput_LT[0]
-print(m)
-print(c)
+mi= 1/m
+ci= -c/m
+print(mi)
+print(ci)

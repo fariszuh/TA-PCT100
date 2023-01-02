@@ -12,10 +12,16 @@ f = open('dataRafif.csv', 'w', encoding='UTF8', newline='') # open the file in t
 writer = csv.writer(f) # create the csv writer
 writer.writerow(header) # write the header
 timeSampling = 0.05 # dalam detik, min 0.05s
-n = 0
+n = 0 # tidak boleh nol agar index tidak e[-1]
 # --------INISIASI Variabel PID----------
-input_level = []
-input_flow = []
+SP = 10
+e=[0.0, 0.0]
+# e[0]=0 # initial condition error, iterasi
+sum_e=[0.0, 0.0]
+de=[0.0, 0.0]
+kp = 68
+ki = 2
+kd = 10
 
 #-----plot data-----
 def plot_data():
@@ -41,14 +47,12 @@ def plot_data():
             lines.set_ydata(arr_volt_level)
             # write multiple rows
             # print("v LT: " + str(volt_level) + " V")
-            print("level: " + str(volt_level) + " cm")
-            7,42675
+            print("level: " + str(volt_level) + " cm ; volt pump: " + str(sinyal_level) + " VDC")
             writer.writerow([n, volt_flow, volt_level, volt_pot, timeNow-start_time])
             # print(arr_n)
             # print(arr_volt_level)
             time.sleep(timeSampling)
             canvas.draw()
-
         window.after(1, plot_data)
 def plot_start():
     global cond, start_time
@@ -67,7 +71,7 @@ def plot_stop():
     f.close()
 
 def kontroller():
-    global volt_flow,volt_level,volt_pot, sent,n
+    global volt_flow,volt_level,volt_pot, sent,n, sinyal_level
     regs = c.read_holding_registers(8, 8)  # format: (address,quantity). quantity gabole lebih, tapi boleh kurang
     bit_flow = regs[0]
     volt_flow = 20*bit_flow/65535 - 10
@@ -79,8 +83,25 @@ def kontroller():
     bit_pot = regs[2]
     volt_pot = (20 * bit_pot / 65535 - 10)
 
+    e[n] = SP - volt_level
+    sum_e[n] = sum_e[n] + e[n]*timeSampling
+    de[n] = (e[n] - e[n-1])/timeSampling
 
-    sent = c.write_multiple_registers(16, [4096, 0])  # list bit pompa dan valve max.4096
+    P = kp*e[n]
+    I = ki*sum_e[n]
+    D = kd*de[n]
+    uPID = P+I+D
+    sinyal_level= 0.586320532982868*uPID - 2.819872168774626  # volt sinyal kirim level
+    bit_uPID = 4096*sinyal_level/10
+    if bit_uPID > 4096:
+        bit_uPID = 4096
+    if bit_uPID < 0:
+        bit_uPID = 0
+    e.append(e[n])
+    sum_e.append(e[n])
+    de.append(e[n])
+
+    sent = c.write_multiple_registers(16, [int(bit_uPID), 0])  # list bit pompa dan valve max.4096
 
     return volt_flow,volt_level,volt_pot
 
@@ -91,15 +112,15 @@ arr_volt_level = []
 
 
 window = tk.Tk()
-window.title('GUI Open Loop PCT-100')
+window.title('GUI Closed Loop PCT-100')
 window.configure(background = 'light blue')
 window.geometry("700x500")
 
 fig = plt.Figure();
 ax = fig.add_subplot(111)
-ax.set_title('Open Loop Level')
+ax.set_title('Closed Loop Level')
 ax.set_xlabel('n ke-')
-ax.set_ylabel('Level (V)')
+ax.set_ylabel('Level (cm)')
 lines = ax.plot([],[])[0]
 
 canvas = FigureCanvasTkAgg(fig, master=window)  # A tk.DrawingArea.
