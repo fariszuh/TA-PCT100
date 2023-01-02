@@ -8,7 +8,7 @@ import random
 c = ModbusClient(host="10.0.0.1", port=502, auto_open=True, auto_close=True)
 
 header = ['n', 'volt_flow', 'volt_level', 'volt_pot', 'timestamp']
-f = open('dataRafif.csv', 'w', encoding='UTF8', newline='') # open the file in the write mode
+f = open('data Closed Loop Khoiruz.csv', 'w', encoding='UTF8', newline='') # open the file in the write mode
 writer = csv.writer(f) # create the csv writer
 writer.writerow(header) # write the header
 timeSampling = 0.05 # dalam detik, min 0.05s
@@ -31,7 +31,7 @@ def plot_data():
         # print(cond)
         timeNow = time.time()
         # condition untuk sampling, jika sudah melebihi time sampling
-        if True:
+        if timeNow-timeLast >= timeSampling:
             n = n + 1
             # print("timeLast sudah bisa masuk")
             arr_n.append(n)
@@ -51,7 +51,7 @@ def plot_data():
             writer.writerow([n, volt_flow, volt_level, volt_pot, timeNow-start_time])
             # print(arr_n)
             # print(arr_volt_level)
-            time.sleep(timeSampling)
+            # time.sleep(timeSampling)
             canvas.draw()
         window.after(1, plot_data)
 def plot_start():
@@ -98,8 +98,8 @@ def kontroller():
     if bit_uPID < 0:
         bit_uPID = 0
     e.append(e[n])
-    sum_e.append(e[n])
-    de.append(e[n])
+    # sum_e.append(e[n])
+    # de.append(e[n])
 
     sent = c.write_multiple_registers(16, [int(bit_uPID), 0])  # list bit pompa dan valve max.4096
 
