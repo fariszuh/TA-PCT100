@@ -21,6 +21,7 @@ SP = 10 # SP level dlm cm
 e=[0.0]
 e_np = np.array([0,0])
 # e[0]=0 # initial condition error, iterasi
+
 de=[0.0]
 de_np = np.array([0,0])
 
@@ -49,7 +50,7 @@ def plot_data():
             lines.set_ydata(arr_volt_level)
             # write multiple rows
             # print("v LT: " + str(volt_level) + " V")
-            # print("level: " + str(input_level) + " cm ; volt pump: " + str(sinyal_level) + " VDC")
+            print("level: " + str(input_level) + " cm ; volt pump: " + str(sinyal_level) + " VDC")
             writer.writerow([n, volt_flow, input_level, volt_pot, timeNow-start_time])
             # print(arr_n)
             # print(arr_volt_level)
@@ -104,33 +105,32 @@ def kontroller():
 
     efuzzy = np.array(e)
     defuzzy = np.array(de)
-    print("e= " + str(efuzzy[n]) + " ; de= " + str(defuzzy[n]))
     # --- Membership output: triangle--------
-    cf = 50  # close fast
-    cs = -20  # close slow
+    cf = -20  # close fast
+    cs = -10  # close slow
     nc = 0  # no change
-    os = 20  # open slow
-    of = 50  # open fast
+    os = 10  # open slow
+    of = 20  # open fast
     # --- Membership input error level: triangle --------
-    e_l = gaussmf(efuzzy, -2, 5)[n]  # error low
-    e_ok = gaussmf(efuzzy, 0, 5)[n]  # error okey
-    e_h = gaussmf(efuzzy, 2, 6)[n]  # error high
-    if efuzzy[n] > 2:
+    e_l = trimf(efuzzy, [-4, 1, 5])[n]  # error low
+    e_ok = trimf(efuzzy, [1, 5, 9])[n]  # error okey
+    e_h = trimf(efuzzy, [5, 9, 14])[n]  # error high
+    if efuzzy[n] > 1:
         e_h = 1
-    elif efuzzy[n] < -2:
+    elif efuzzy[n] < 1:
         e_l = 1
     # --- Membership input error level: triangle --------
-    de_n = gaussmf(efuzzy, -20, 50)[n]  # delta error negative
-    de_z = gaussmf(efuzzy, 0, 50)[n]  # delta error zero
-    de_p = gaussmf(efuzzy, 20, 50)[n]  # delta error positive
-    if defuzzy[n] > 20:
+    de_n = trimf(efuzzy, [-1, -0.5, 0])[n]  # delta error negative
+    de_z = trimf(efuzzy, [-0.5, 0, 0.5])[n]  # delta error zero
+    de_p = trimf(efuzzy, [0, 0.5, 1])[n]  # delta error positive
+    if defuzzy[n] > 0.5:
         de_p = 1
-    elif defuzzy[n] < -20:
+    elif defuzzy[n] < -0.5:
         de_n = 1
     # ---- Rule base --------------------------------------
-    LTable_y = [[of, os, nc],
-                [os, nc, cs],
-                [nc, cs, cf]]
+    LTable_y = [[of, nc, cf],
+                [of, nc, cf],
+                [of, nc, cf]]
     # ---- perbandingan e, de untuk Center of Area
     perbandingan_e = [e_l, e_ok, e_h]
     perbandingan_de = [de_n, de_z, de_p]
@@ -142,9 +142,9 @@ def kontroller():
             miu = perbandingan * LTable_y[i-1][j-1]
             total_perbandingan = total_perbandingan + perbandingan
             total_miu = total_miu + miu
-            # print("perbandingan: " + str(perbandingan))
+            print("perbandingan: " + str(perbandingan))
     outputvolt = total_miu / total_perbandingan
-    print("outputvolt COA: " + str(outputvolt))
+    print("outputvolt: " + str(outputvolt))
     sinyal_level= 0.586320532982868*outputvolt - 2.819872168774626  # volt sinyal kirim level, level ke volt
     bit_uPID = 4096*sinyal_level/10 # volt ke bit 4096
     if bit_uPID > 4096:

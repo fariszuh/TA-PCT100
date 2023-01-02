@@ -8,7 +8,7 @@ import random
 c = ModbusClient(host="10.0.0.1", port=502, auto_open=True, auto_close=True)
 
 header = ['n', 'volt_flow', 'volt_level', 'volt_pot', 'timestamp']
-f = open('data Closed Loop Khoiruz.csv', 'w', encoding='UTF8', newline='') # open the file in the write mode
+f = open('dataRafif.csv', 'w', encoding='UTF8', newline='') # open the file in the write mode
 writer = csv.writer(f) # create the csv writer
 writer.writerow(header) # write the header
 timeSampling = 0.05 # dalam detik, min 0.05s
@@ -17,11 +17,12 @@ n = 0 # tidak boleh nol agar index tidak e[-1]
 SP = 10
 e=[0.0, 0.0]
 # e[0]=0 # initial condition error, iterasi
-sum_e=[0.0, 0.0]
-de=[0.0, 0.0]
-kp = 68
-ki = 2
-kd = 10
+sum_e=[]
+
+de=[0.0]
+kp = 1
+ki = 0
+kd = 0
 
 #-----plot data-----
 def plot_data():
@@ -31,7 +32,7 @@ def plot_data():
         # print(cond)
         timeNow = time.time()
         # condition untuk sampling, jika sudah melebihi time sampling
-        if timeNow-timeLast >= timeSampling:
+        if True:
             n = n + 1
             # print("timeLast sudah bisa masuk")
             arr_n.append(n)
@@ -47,11 +48,11 @@ def plot_data():
             lines.set_ydata(arr_volt_level)
             # write multiple rows
             # print("v LT: " + str(volt_level) + " V")
-            print("level: " + str(volt_level) + " cm ; volt pump: " + str(sinyal_level) + " VDC")
+            print("level: " + str(volt_level) + " cm")
             writer.writerow([n, volt_flow, volt_level, volt_pot, timeNow-start_time])
             # print(arr_n)
             # print(arr_volt_level)
-            # time.sleep(timeSampling)
+            time.sleep(timeSampling)
             canvas.draw()
         window.after(1, plot_data)
 def plot_start():
@@ -71,7 +72,7 @@ def plot_stop():
     f.close()
 
 def kontroller():
-    global volt_flow,volt_level,volt_pot, sent,n, sinyal_level
+    global volt_flow,volt_level,volt_pot, sent,n
     regs = c.read_holding_registers(8, 8)  # format: (address,quantity). quantity gabole lebih, tapi boleh kurang
     bit_flow = regs[0]
     volt_flow = 20*bit_flow/65535 - 10
@@ -82,7 +83,8 @@ def kontroller():
 
     bit_pot = regs[2]
     volt_pot = (20 * bit_pot / 65535 - 10)
-
+    print(n)
+    print(e[n])
     e[n] = SP - volt_level
     sum_e[n] = sum_e[n] + e[n]*timeSampling
     de[n] = (e[n] - e[n-1])/timeSampling
@@ -97,11 +99,8 @@ def kontroller():
         bit_uPID = 4096
     if bit_uPID < 0:
         bit_uPID = 0
-    e.append(e[n])
-    # sum_e.append(e[n])
-    # de.append(e[n])
 
-    sent = c.write_multiple_registers(16, [int(bit_uPID), 0])  # list bit pompa dan valve max.4096
+    sent = c.write_multiple_registers(16, [bit_uPID, 0])  # list bit pompa dan valve max.4096
 
     return volt_flow,volt_level,volt_pot
 
@@ -112,15 +111,15 @@ arr_volt_level = []
 
 
 window = tk.Tk()
-window.title('GUI Closed Loop PCT-100')
+window.title('GUI Open Loop PCT-100')
 window.configure(background = 'light blue')
 window.geometry("700x500")
 
 fig = plt.Figure();
 ax = fig.add_subplot(111)
-ax.set_title('Closed Loop Level')
+ax.set_title('Open Loop Level')
 ax.set_xlabel('n ke-')
-ax.set_ylabel('Level (cm)')
+ax.set_ylabel('Level (V)')
 lines = ax.plot([],[])[0]
 
 canvas = FigureCanvasTkAgg(fig, master=window)  # A tk.DrawingArea.
