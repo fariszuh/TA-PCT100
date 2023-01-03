@@ -7,6 +7,10 @@ from pyModbusTCP.client import ModbusClient
 import random
 from skfuzzy import gaussmf, trimf
 import numpy as np
+from paho.mqtt import client as mqtt_client
+
+broker = 'test.mosquitto.org'
+port = 1883
 
 c = ModbusClient(host="10.0.0.1", port=502, auto_open=True, auto_close=True)
 
@@ -24,7 +28,19 @@ e_np = np.array([0,0])
 
 de=[0.0]
 de_np = np.array([0,0])
+# MQTT------------------
+def on_message(client, userdata, message):
+    global SP
+    SP = str(message.payload.decode("utf-8"))
+    # print("received message: " ,str(message.payload.decode("utf-8")))
+    # return SP
+    print("SP: " + str(SP))
 
+def on_connect(client, userdata, flags, rc):
+    if rc == 0:
+        print("Connected to MQTT Broker!")
+    else:
+        print("Failed to connect, return code %d\n", rc)
 
 #-----plot data-----
 def plot_data():
@@ -58,12 +74,19 @@ def plot_data():
             canvas.draw()
         window.after(1, plot_data)
 def plot_start():
-    global cond, start_time
+    global cond, start_time, client
     cond = True
     start_time = time.time()
     # s.reset_input_buffer()
     print("start mulai yaa")
     # return cond
+    client = mqtt_client.Client()
+    # client.username_pw_set(username, password)
+    client.on_connect = on_connect
+    client.connect(broker, port)
+    client.loop_start()
+    SP = 0
+    print("MQTT Siap")
     window.after(1, plot_data)
 
 def plot_stop():
@@ -76,6 +99,7 @@ def plot_stop():
 
 def kontroller():
     global volt_flow,input_level,volt_pot, sent,n, sinyal_level, input_flow, e_np, de_np
+
     regs = c.read_holding_registers(8, 8)  # format: (address,quantity). quantity gabole lebih, tapi boleh kurang
 
     bit_flow = regs[0]
@@ -158,13 +182,25 @@ def kontroller():
     # print(bit_uPID)
     sent = c.write_multiple_registers(16, [int(bit_uPID), 0])  # list bit pompa dan valve max.4096
     volt_pot = 69 # ntar hapus ya, ini ga kepake
+    # ----send to MQTT-----------------
+
+    result = client.publish("PCT100/level", str(input_level))
+    status = result[0]
+    if status == 0:
+        print(f"Send level berhasil")
+    else:
+        print(f"gagal send level")
+
+    client.subscribe("PCT100/SP")
+    client.on_message = on_message
+    # print("SP: " + str(SP))
+
     return volt_flow,input_level,volt_pot
 
 cond = False
 timeLast = 0
 arr_n = []
 arr_volt_level = []
-
 
 window = tk.Tk()
 window.title('GUI Closed Loop PCT-100')
