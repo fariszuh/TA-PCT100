@@ -8,7 +8,7 @@ import random
 c = ModbusClient(host="10.0.0.1", port=502, auto_open=True, auto_close=True)
 
 header = ['n', 'volt_flow', 'volt_level', 'volt_pot', 'timestamp']
-f = open('dataRafif.csv', 'w', encoding='UTF8', newline='') # open the file in the write mode
+f = open('data Closed Loop Khoiruz.csv', 'w', encoding='UTF8', newline='') # open the file in the write mode
 writer = csv.writer(f) # create the csv writer
 writer.writerow(header) # write the header
 timeSampling = 0.05 # dalam detik, min 0.05s
@@ -17,12 +17,12 @@ n = 0 # tidak boleh nol agar index tidak e[-1]
 SP = 10
 e=[0.0, 0.0]
 # e[0]=0 # initial condition error, iterasi
-sum_e=[]
+sum_e=[0.0, 0.0]
+de=[0.0, 0.0]
 
-de=[0.0]
-kp = 1
-ki = 0
-kd = 0
+kp = 68
+ki = 2
+kd = 10
 
 #-----plot data-----
 def plot_data():
@@ -32,7 +32,7 @@ def plot_data():
         # print(cond)
         timeNow = time.time()
         # condition untuk sampling, jika sudah melebihi time sampling
-        if True:
+        if timeNow-timeLast >= timeSampling:
             n = n + 1
             # print("timeLast sudah bisa masuk")
             arr_n.append(n)
@@ -52,7 +52,7 @@ def plot_data():
             writer.writerow([n, volt_flow, volt_level, volt_pot, timeNow-start_time])
             # print(arr_n)
             # print(arr_volt_level)
-            time.sleep(timeSampling)
+            # time.sleep(timeSampling)
             canvas.draw()
         window.after(1, plot_data)
 def plot_start():
@@ -72,7 +72,7 @@ def plot_stop():
     f.close()
 
 def kontroller():
-    global volt_flow,volt_level,volt_pot, sent,n
+    global volt_flow,volt_level,volt_pot, sent,n, sinyal_level
     regs = c.read_holding_registers(8, 8)  # format: (address,quantity). quantity gabole lebih, tapi boleh kurang
     bit_flow = regs[0]
     volt_flow = 20*bit_flow/65535 - 10
@@ -93,6 +93,7 @@ def kontroller():
     I = ki*sum_e[n]
     D = kd*de[n]
     uPID = P+I+D
+
     sinyal_level= 0.586320532982868*uPID - 2.819872168774626  # volt sinyal kirim level
     bit_uPID = 4096*sinyal_level/10
     if bit_uPID > 4096:
@@ -100,7 +101,10 @@ def kontroller():
     if bit_uPID < 0:
         bit_uPID = 0
 
-    sent = c.write_multiple_registers(16, [bit_uPID, 0])  # list bit pompa dan valve max.4096
+    e.append(e[n])
+    sum_e.append(e[n])
+    de.append(e[n])
+    sent = c.write_multiple_registers(16, [int(bit_uPID), 0])  # list bit pompa dan valve max.4096
 
     return volt_flow,volt_level,volt_pot
 
@@ -111,15 +115,16 @@ arr_volt_level = []
 
 
 window = tk.Tk()
-window.title('GUI Open Loop PCT-100')
+window.title('GUI Closed Loop PCT-100')
 window.configure(background = 'light blue')
 window.geometry("700x500")
 
 fig = plt.Figure();
 ax = fig.add_subplot(111)
-ax.set_title('Open Loop Level')
+ax.set_title('Closed Loop Level')
 ax.set_xlabel('n ke-')
-ax.set_ylabel('Level (V)')
+ax.set_ylabel('Level (cm)')
+# ax.set_ylabel('Level (V)')
 lines = ax.plot([],[])[0]
 
 canvas = FigureCanvasTkAgg(fig, master=window)  # A tk.DrawingArea.
