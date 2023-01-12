@@ -7,7 +7,9 @@ from pyModbusTCP.client import ModbusClient
 import random
 c = ModbusClient(host="10.0.0.1", port=502, auto_open=True, auto_close=True)
 
-header = ['n', 'volt_flow', 'volt_level', 'volt_pot', 'timestamp']
+header = ['n','timestamp','volt_level','volt_flow','dvolt_flow','']
+writer.writerow([n, timeNow-start_time, volt_level, volt_flow, volt_flow-volt_flow_last,])
+
 f = open('data Closed Loop Khoiruz.csv', 'w', encoding='UTF8', newline='') # open the file in the write mode
 writer = csv.writer(f) # create the csv writer
 writer.writerow(header) # write the header
@@ -19,6 +21,7 @@ e=[0.0, 0.0]
 # e[0]=0 # initial condition error, iterasi
 sum_e=[0.0, 0.0]
 de=[0.0, 0.0]
+volt_flow = 0
 
 kp = 68
 ki = 2
@@ -37,7 +40,7 @@ def plot_data():
             # print("timeLast sudah bisa masuk")
             arr_n.append(n)
             volt_flow,volt_level,volt_pot = kontroller()
-
+            volt_flow_last = volt_flow
             arr_volt_level.append(volt_level)
 
             timeLast = timeNow
@@ -49,7 +52,7 @@ def plot_data():
             # write multiple rows
             # print("v LT: " + str(volt_level) + " V")
             print("level: " + str(volt_level) + " cm")
-            writer.writerow([n, volt_flow, volt_level, volt_pot, timeNow-start_time])
+            writer.writerow([n, volt_flow, volt_level, timeNow-start_time])
             # print(arr_n)
             # print(arr_volt_level)
             # time.sleep(timeSampling)
@@ -104,8 +107,8 @@ def kontroller():
     e.append(e[n])
     sum_e.append(e[n])
     de.append(e[n])
-    sent = c.write_multiple_registers(16, [int(bit_uPID), 0])  # list bit pompa dan valve max.4096
 
+    sent = c.write_multiple_registers(16, [int(bit_uPID), 0])  # list bit pompa dan valve max.4096
     return volt_flow,volt_level,volt_pot
 
 cond = False
@@ -132,11 +135,11 @@ canvas.get_tk_widget().place(x = 10,y=10, width = 600,height = 400)
 canvas.draw()
 # ----------create button---------
 window.update();
-start = tk.Button(window, text = "Start", font = ('calbiri',12),command = lambda: plot_start())
+start = tk.Button(window, text = "Start", font = ('calibri',12),command = lambda: plot_start())
 start.place(x = 100, y = 450 )
 
 window.update();
-stop = tk.Button(window, text = "Stop", font = ('calbiri',12), command = lambda:plot_stop())
+stop = tk.Button(window, text = "Stop", font = ('calibri',12), command = lambda:plot_stop())
 stop.place(x = start.winfo_x()+start.winfo_reqwidth() + 20, y = 450)
 
 # window.after(1,plot_data)
