@@ -4,21 +4,21 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import time
 import csv
 from pyModbusTCP.client import ModbusClient
-import random
+
 c = ModbusClient(host="10.0.0.1", port=502, auto_open=True, auto_close=True)
 
-header = ['n','timestamp','volt_level','volt_flow','dvolt_flow','']
-writer.writerow([n, timeNow-start_time, volt_level, volt_flow, volt_flow-volt_flow_last,])
+header = ['k','timestamp','PV_level (cm)','PV_flow (VDC)','dPVflow','dt','Q_FT (lt/min)']
 
-f = open('data Closed Loop Khoiruz.csv', 'w', encoding='UTF8', newline='') # open the file in the write mode
+f = open('Datasets Open Loop Faris.csv', 'w', encoding='UTF8', newline='') # open the file in the write mode
 writer = csv.writer(f) # create the csv writer
 writer.writerow(header) # write the header
-timeSampling = 0.05 # dalam detik, min 0.05s
-n = 0 # tidak boleh nol agar index tidak e[-1]
+timeSampling = 0.1 # dalam detik, min 0.05s
+PV_flow_last = 0.0
+timeQFT_last = 0.0
+k = 0 # tidak boleh nol agar index tidak e[-1]
 # --------INISIASI Variabel PID----------
 SP = 10
 e=[0.0, 0.0]
-# e[0]=0 # initial condition error, iterasi
 sum_e=[0.0, 0.0]
 de=[0.0, 0.0]
 volt_flow = 0
@@ -29,111 +29,131 @@ kd = 10
 
 #-----plot data-----
 def plot_data():
-    # print("masuk plot data")
-    global n,cond, arr_n, arr_volt_level, timeLast, sent
+    global cond, k, arr_k, arr_PV_level, arr_PV_flow, timeLast, sent, PV_flow_last, timeQFT_last, elapsedTimeQFT, Q_FT
     if (cond==True):
-        # print(cond)
         timeNow = time.time()
         # condition untuk sampling, jika sudah melebihi time sampling
-        if timeNow-timeLast >= timeSampling:
-            n = n + 1
-            # print("timeLast sudah bisa masuk")
-            arr_n.append(n)
-            volt_flow,volt_level,volt_pot = kontroller()
-            volt_flow_last = volt_flow
-            arr_volt_level.append(volt_level)
+        elapsedTime = timeNow - timeLast
+        if elapsedTime >= timeSampling:
+            k = k + 1
+            arr_k.append(k)
+            PV_flow,PV_level = kontroller()
+            # ------append into list to plot data--------
+            arr_PV_level.append(PV_level)
+            arr_PV_flow.append(PV_flow)
 
             timeLast = timeNow
-            ax.set_xlim(min(arr_n), max(arr_n))
-            ax.set_ylim(min(arr_volt_level), max(arr_volt_level))
-            # lines = ax.plot(arr_elapse, arr_volt_level, color='green')
-            lines.set_xdata(arr_n)
-            lines.set_ydata(arr_volt_level)
-            # write multiple rows
-            # print("v LT: " + str(volt_level) + " V")
-            print("level: " + str(volt_level) + " cm")
-            writer.writerow([n, volt_flow, volt_level, timeNow-start_time])
-            # print(arr_n)
-            # print(arr_volt_level)
-            # time.sleep(timeSampling)
+            print("---- k = " + str(k) + "----")
+            # ------PLOT FIGURE from list----------------
+            ax_level.set_xlim(min(arr_k), max(arr_k))
+            ax_level.set_ylim(min(arr_PV_level), max(arr_PV_level))
+            lines_level.set_xdata(arr_k)
+            lines_level.set_ydata(arr_PV_level)
+            print("Level: " + str(PV_level) + " cm")
+
+            ax_flow.set_xlim(min(arr_k), max(arr_k))
+            ax_flow.set_ylim(min(arr_PV_flow), max(arr_PV_flow))
+            lines_flow.set_xdata(arr_k)
+            lines_flow.set_ydata(arr_PV_flow)
+            print("Flow: " + str(PV_flow) + " Volt")
+
+            dPVflow = PV_flow - PV_flow_last
+            timeRun = timeNow - start_time
+            if not PV_flow == PV_flow_last:
+                Q_FT = 22 * 1 * 1 * dPVflow / (4 * 7 * elapsedTime)
+                elapsedTimeQFT = timeNow - timeQFT_last
+                timeQFT_last = timeNow
+                # writer.writerow([k, timeRun, PV_level, PV_flow, dPVflow, elapsedTimeQFT, Q_FT])
+            PV_flow_last = PV_flow
+            writer.writerow([k, timeRun, PV_level, PV_flow, dPVflow, elapsedTimeQFT, Q_FT])
             canvas.draw()
         window.after(1, plot_data)
+
 def plot_start():
     global cond, start_time
     cond = True
     start_time = time.time()
-    # s.reset_input_buffer()
-    print("start mulai yaa")
-    # return cond
+    print("Status: START ON")
     window.after(1, plot_data)
 
 def plot_stop():
     global cond, sent
     cond = False
-    print("sudah stop yaa")
+    print("Status: STOP (Drain ON)")
     sent = c.write_multiple_registers(16, [0, 4096])
     f.close()
 
+def plot_off():
+    global cond, sent
+    cond = False
+    print("Status: All OFF")
+    sent = c.write_multiple_registers(16, [0, 0]) # biar MOV ga panas
+    f.close()
+
 def kontroller():
-    global volt_flow,volt_level,volt_pot, sent,n, sinyal_level
+    global PV_flow, PV_level, k, sent
     regs = c.read_holding_registers(8, 8)  # format: (address,quantity). quantity gabole lebih, tapi boleh kurang
-    bit_flow = regs[0]
-    volt_flow = 20*bit_flow/65535 - 10
+    PV_bit_flow = regs[0]
+    PV_volt_flow = 20*PV_bit_flow/65535 - 10
+    PV_flow = PV_volt_flow*1 + 0 # PV nanti ganti dengan hasil regresi
 
-    bit_level = regs[1]
-    # volt_level = (20 * bit_level / 65535 - 10)
-    volt_level = 1.7055517310856645*(20*bit_level/65535 - 10) + 4.80943785889385
+    PV_bit_level = regs[1]
+    PV_volt_level = 20*PV_bit_level/65535 - 10 # dalam volt
+    PV_level = 1.7055517310856645*PV_volt_level + 4.80943785889385 # dalam cm
+    # print(k)
+    # print(e[k])
+    e[k] = SP - PV_level # dalam cm
+    sum_e[k] = sum_e[k] + e[k]*timeSampling # dalam cm.s
+    de[k] = (e[k] - e[k-1])/timeSampling # dalam cm/s
 
-    bit_pot = regs[2]
-    volt_pot = (20 * bit_pot / 65535 - 10)
-    print(n)
-    print(e[n])
-    e[n] = SP - volt_level
-    sum_e[n] = sum_e[n] + e[n]*timeSampling
-    de[n] = (e[n] - e[n-1])/timeSampling
+    P = kp*e[k]
+    I = ki*sum_e[k]
+    D = kd*de[k]
+    uPID = P+I+D # dalam cm
 
-    P = kp*e[n]
-    I = ki*sum_e[n]
-    D = kd*de[n]
-    uPID = P+I+D
+    MV_volt_level= 0.586320532982868*uPID - 2.819872168774626  # volt sinyal kirim level
+    MV_bit_level = 4096*MV_volt_level/10 # bit sinyal kirim level ke pump
+    if MV_bit_level > 4096:
+        MV_bit_level = 4096
+    if MV_bit_level < 0:
+        MV_bit_level = 0
 
-    sinyal_level= 0.586320532982868*uPID - 2.819872168774626  # volt sinyal kirim level
-    bit_uPID = 4096*sinyal_level/10
-    if bit_uPID > 4096:
-        bit_uPID = 4096
-    if bit_uPID < 0:
-        bit_uPID = 0
-
-    e.append(e[n])
-    sum_e.append(e[n])
-    de.append(e[n])
-
-    sent = c.write_multiple_registers(16, [int(bit_uPID), 0])  # list bit pompa dan valve max.4096
-    return volt_flow,volt_level,volt_pot
+    e.append(e[k])
+    sum_e.append(e[k])
+    de.append(e[k])
+    # sent = c.write_multiple_registers(16, [int(MV_bit_level), 0])  # list bit pompa dan valve max.4096
+    sent = c.write_multiple_registers(16, [4096, 0])  # OPEN LOOP Q_FT
+    return PV_flow,PV_level
 
 cond = False
 timeLast = 0
-arr_n = []
-arr_volt_level = []
-
+arr_k = []
+arr_PV_level = []
+arr_PV_flow = []
 
 window = tk.Tk()
 window.title('GUI Closed Loop PCT-100')
 window.configure(background = 'light blue')
-window.geometry("700x500")
-
+window.geometry("1000x500")
+# --------- FIGURE KIRI LEVEL ------------
 fig = plt.Figure();
-ax = fig.add_subplot(111)
-ax.set_title('Closed Loop Level')
-ax.set_xlabel('n ke-')
-ax.set_ylabel('Level (cm)')
-# ax.set_ylabel('Level (V)')
-lines = ax.plot([],[])[0]
+ax_level = fig.add_subplot(1,2,1)
+ax_level.set_title('Closed Loop Level')
+ax_level.set_xlabel('k ke-')
+ax_level.set_ylabel('Level (cm)')
+lines_level = ax_level.plot([],[])[0] # garis level
+# --------- FIGURE KANAN FLOW ------------
+fig.subplots_adjust(wspace=0.3) # space antar figure kiri dan kanan
+ax_flow = fig.add_subplot(1,2,2)
+ax_flow.set_title('Closed Loop Flow')
+ax_flow.set_xlabel('k ke-')
+ax_flow.set_ylabel('Flow (lt/min)')
+lines_flow = ax_flow.plot([],[])[0] # garis flow
 
 canvas = FigureCanvasTkAgg(fig, master=window)  # A tk.DrawingArea.
-canvas.get_tk_widget().place(x = 10,y=10, width = 600,height = 400)
+canvas.get_tk_widget().place(x = 10,y=10, width = 900,height = 400)
 canvas.draw()
-# ----------create button---------
+# ---------- BUTTON GUI ------------------
 window.update();
 start = tk.Button(window, text = "Start", font = ('calibri',12),command = lambda: plot_start())
 start.place(x = 100, y = 450 )
@@ -142,8 +162,8 @@ window.update();
 stop = tk.Button(window, text = "Stop", font = ('calibri',12), command = lambda:plot_stop())
 stop.place(x = start.winfo_x()+start.winfo_reqwidth() + 20, y = 450)
 
-# window.after(1,plot_data)
-window.mainloop()
+window.update();
+stop = tk.Button(window, text = "System OFF", font = ('calibri',12), command = lambda:plot_off())
+stop.place(x = start.winfo_x()+start.winfo_reqwidth()+stop.winfo_x()+stop.winfo_reqwidth() + 20, y = 450)
 
-# greeting = tk.Label(text="Hello, Tkinter")
-# greeting.pack()
+window.mainloop()
