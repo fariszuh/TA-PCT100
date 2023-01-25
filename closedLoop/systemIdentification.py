@@ -13,7 +13,7 @@ arr_PV_level = []
 arr_PV_flow = []
 arr_Q_lt = []
 
-with open('Datasets Open Loop Faris.csv', 'r') as csvfile:
+with open('Datasets/Datasets Open Loop Faris Ts 0.05.csv', 'r') as csvfile:
     # print(type(arr_k))
     readCSV = csv.reader(csvfile)
     header = next(readCSV) # skip first line i.e. read header first and then iterate over each row od csv as a list
