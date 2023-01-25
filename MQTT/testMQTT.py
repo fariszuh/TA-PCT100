@@ -83,7 +83,9 @@ while True:
     msg_count += 1
     client.subscribe("PCT100/SP")
     client.on_message = on_message
-    print("SP: " + str(type(SP)))
+
+    bacaSP = on_message(client)
+    print("SP: " + str(bacaSP))
 
 
 # time.sleep(30)
