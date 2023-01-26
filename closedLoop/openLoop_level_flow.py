@@ -17,25 +17,40 @@ timeSampling = 0.05 # dalam detik, min 0.05s
 PV_flow_last = 0.0
 timeQFT_last = 0.0
 k = 0 # tidak boleh nol agar index tidak e[-1]
-# --------INISIASI Variabel PID----------
-SP = 10
-e=[0.0, 0.0]
-sum_e=[0.0, 0.0]
-de=[0.0, 0.0]
+## --------INISIASI Variabel PID----------
 volt_flow = 0
+Rtabung = 9 # dalam cm
+Atabung = 22*(Rtabung**2)/7
+Rpipa = 0.4 # dalam cm
+Apipa = 22*(Rpipa**2)/7
+# ---- Outer loop: level control ----
+SP = 10
+e_level = [0.0, 0.0]
+sum_e_level = [0.0, 0.0]
+de_level = [0.0, 0.0]
 
-kp = 68
-ki = 2
-kd = 10
+kp_level = 68
+ki_level = 2
+kd_level = 10
+# ---- Inner loop: flow control -----
+e_flow = [0.0, 0.0]
+sum_e_flow = [0.0, 0.0]
+de_flow = [0.0, 0.0]
 
+kp_flow = 20
+ki_flow = 10
+kd_flow = 6
+
+uPID_level_last = 0
 #---- PLOT DATA ----
 def plot_data():
-    global cond, k, arr_k, arr_PV_level, arr_PV_flow, timeLast, sent, PV_flow_last, timeQFT_last, elapsedTimeQFT, Q_FT
+    global Ts, cond, k, arr_k, arr_PV_level, arr_PV_flow, timeLast, sent, PV_flow_last, timeQFT_last, elapsedTimeQFT, Q_FT
     if (cond==True):
         timeNow = time.time()
         # condition untuk sampling, jika sudah melebihi time sampling
         elapsedTime = timeNow - timeLast
         if elapsedTime >= timeSampling:
+            Ts = elapsedTime # time sampling sebenarnya (beda antar k dan k-1)
             k = k + 1
             arr_k.append(k)
             PV_flow,PV_level = kontroller()
@@ -92,7 +107,7 @@ def plot_off():
     f.close()
 
 def kontroller():
-    global PV_flow, PV_level, k, sent
+    global PV_flow, PV_level, k, sent, uPID_level_last
     regs = c.read_holding_registers(8, 8)  # format: (address,quantity). quantity gabole lebih, tapi boleh kurang
     PV_bit_flow = regs[0]
     PV_volt_flow = 20*PV_bit_flow/65535 - 10
@@ -101,29 +116,47 @@ def kontroller():
     PV_bit_level = regs[1]
     PV_volt_level = 20*PV_bit_level/65535 - 10 # dalam volt
     PV_level = 1.7055517310856645*PV_volt_level + 4.80943785889385 # dalam cm
-    # print(k)
-    # print(e[k])
-    e[k] = SP - PV_level # dalam cm
-    sum_e[k] = sum_e[k] + e[k]*timeSampling # dalam cm.s
-    de[k] = (e[k] - e[k-1])/timeSampling # dalam cm/s
 
-    P = kp*e[k]
-    I = ki*sum_e[k]
-    D = kd*de[k]
-    uPID = P+I+D # dalam cm
+    ## ---- KONTROLLER PID OUTER LOOP : LEVEL CONTROL -------
+    e_level[k] = SP - PV_level # dalam cm
+    sum_e_level[k] = sum_e_level[k] + e_level[k]*Ts # dalam cm.s
+    de_level[k] = (e_level[k] - e_level[k-1])/Ts # dalam cm/s
 
-    MV_volt_level= 0.586320532982868*uPID - 2.819872168774626  # volt sinyal kirim level
+    P_level = kp_level * e_level[k]
+    I_level = ki_level * sum_e_level[k]
+    D_level = kd_level * de_level[k]
+    uPID_level = P_level + I_level + D_level # dalam cm, ini menjadi SP bagi inner loop flow
+    SP_flow = Atabung*(uPID_level - uPID_level_last)/Ts # ----- BELUM FIX, UBAH BESARAN LEVEL KE FLOW ----------
+
+    ## ---- KONTROLLER PID INNER LOOP : FLOW CONTROL -------
+    e_flow[k] = SP_flow - PV_flow  # dalam cm
+    sum_e_flow[k] = sum_e_flow[k] + e_flow[k] * Ts  # dalam cm.s
+    de_flow[k] = (e_flow[k] - e_flow[k - 1]) / Ts  # dalam cm/s
+
+    P_flow = kp_flow * e_flow[k]
+    I_flow = ki_flow * sum_e_flow[k]
+    D_flow = kd_flow * de_flow[k]
+    uPID_flow = P_flow + I_flow + D_flow  # dalam cm, ini menjadi SP bagi inner loop flow
+
+
+    MV_volt_level= 0.586320532982868*uPID_level - 2.819872168774626  # volt sinyal kirim level
     MV_bit_level = 4096*MV_volt_level/10 # bit sinyal kirim level ke pump
     if MV_bit_level > 4096:
         MV_bit_level = 4096
     if MV_bit_level < 0:
         MV_bit_level = 0
 
-    e.append(e[k])
-    sum_e.append(e[k])
-    de.append(e[k])
-    # sent = c.write_multiple_registers(16, [int(MV_bit_level), 0])  # list bit pompa dan valve max.4096
-    sent = c.write_multiple_registers(16, [4096, 0])  # OPEN LOOP Q_FT
+    uPID_level_last = uPID_level
+
+    e_level.append(e_level[k])
+    sum_e_level.append(e_level[k])
+    de_level.append(e_level[k])
+
+    e_flow.append(e_flow[k])
+    sum_e_flow.append(e_flow[k])
+    de_flow.append(e_flow[k])
+    sent = c.write_multiple_registers(16, [int(MV_bit_level), 0])  # list bit pompa dan valve max.4096
+    # sent = c.write_multiple_registers(16, [4096, 0])  # OPEN LOOP Q_FT
     return PV_flow,PV_level
 
 cond = False
