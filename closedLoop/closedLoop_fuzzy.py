@@ -25,22 +25,19 @@ SP = 10 # SP level dlm cm
 e=[0.0]
 e_np = np.array([0,0])
 # e[0]=0 # initial condition error, iterasi
-
 de=[0.0]
 de_np = np.array([0,0])
-# MQTT------------------
+# --------- MQTT------------------
 def on_message(client, userdata, message):
-    global SP
-    SP = str(message.payload.decode("utf-8"))
-    # print("received message: " ,str(message.payload.decode("utf-8")))
-    # return SP
-    print("SP: " + str(SP))
-
+    stringParameterMasuk = str(message.payload.decode())
+    # rekam(rrr)
 def on_connect(client, userdata, flags, rc):
     if rc == 0:
         print("Connected to MQTT Broker!")
     else:
         print("Failed to connect, return code %d\n", rc)
+def on_disconnect(client, userdata, rc):
+    print("Client Got Disconnected")
 
 #-----plot data-----
 def plot_data():
@@ -75,6 +72,7 @@ def plot_data():
         window.after(1, plot_data)
 def plot_start():
     global cond, start_time, client
+    global cf, cs, nc, os, of, stringParameterMasuk
     cond = True
     start_time = time.time()
     # s.reset_input_buffer()
@@ -82,12 +80,23 @@ def plot_start():
     # return cond
     client = mqtt_client.Client()
     # client.username_pw_set(username, password)
+    print("Connecting to MQTT Broker ....")
     client.on_connect = on_connect
     client.connect(broker, port)
     client.loop_start()
     SP = 0
-    print("MQTT Siap")
+    print("MQTT Connected")
+
+    # --- Membership output: triangle--------
+    cf = -20  # close fast
+    cs = -10  # close slow
+    nc = 0  # no change
+    os = 10  # open slow
+    of = 20  # open fast
+
     window.after(1, plot_data)
+
+    stringParameterMasuk = "# Belum dapat string subscribe"
 
 def plot_stop():
     global cond, sent
@@ -99,7 +108,7 @@ def plot_stop():
 
 def kontroller():
     global volt_flow,input_level,volt_pot, sent,n, sinyal_level, input_flow, e_np, de_np
-
+    global cf, cs, nc, os, of
     regs = c.read_holding_registers(8, 8)  # format: (address,quantity). quantity gabole lebih, tapi boleh kurang
 
     bit_flow = regs[0]
@@ -129,12 +138,7 @@ def kontroller():
 
     efuzzy = np.array(e)
     defuzzy = np.array(de)
-    # --- Membership output: triangle--------
-    cf = -20  # close fast
-    cs = -10  # close slow
-    nc = 0  # no change
-    os = 10  # open slow
-    of = 20  # open fast
+
     # --- Membership input error level: triangle --------
     e_l = trimf(efuzzy, [-4, 1, 5])[n]  # error low
     e_ok = trimf(efuzzy, [1, 5, 9])[n]  # error okey
@@ -191,9 +195,32 @@ def kontroller():
     else:
         print(f"gagal send level")
 
-    client.subscribe("PCT100/SP")
+    client.subscribe([('PCT100/MFout/cf', 1),
+                      ('PCT100/MFout/cs', 1),
+                      ('PCT100/MFout/nc', 1),
+                      ('PCT100/MFout/os', 1),
+                      ('PCT100/MFout/of', 1)])
     client.on_message = on_message
-    # print("SP: " + str(SP))
+
+    words = stringParameterMasuk.split('=')
+
+    if words[0] == 'cf':
+        cf = float(words[1])
+    elif words[0] == 'cs':
+        cs = float(words[1])
+    elif words[0] == 'nc':
+        nc = float(words[1])
+    elif words[0] == 'os':
+        os = float(words[1])
+    elif words[0] == 'of':
+        of = float(words[1])
+    else:
+        print("StringParameter Undefined")
+    print("cf = " + str(cf) +
+          " ; cs = " + str(cs) +
+          " ; nc = " + str(nc) +
+          " ; os = " + str(os) +
+          " ; of = " + str(of))
 
     return volt_flow,input_level,volt_pot
 
