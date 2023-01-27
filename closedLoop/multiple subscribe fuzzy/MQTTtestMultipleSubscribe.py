@@ -45,7 +45,7 @@ while True:
     #     print(f"Failed to send message to topic {topic}")
     msg_count += 1
 
-    client.subscribe([('PCT100/SP', 1), ('PCT100/kp', 1), ('PCT100/ki', 1), ('PCT100/kd', 1)])
+    client.subscribe([('PCT100/SP', 1), ('PCT100/kp', 1), ('PCT100/ki', 1), ('PCT100/kd', 1)]) # multiple subscribe & QoS=1 agar respon benar/clarify it
     client.on_message = on_message
     # print(stringParameterMasuk)
     words = stringParameterMasuk.split('=')
