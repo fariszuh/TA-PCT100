@@ -126,7 +126,7 @@ def kontroller():
     I_level = ki_level * sum_e_level[k]
     D_level = kd_level * de_level[k]
     uPID_level = P_level + I_level + D_level # dalam cm, ini menjadi SP bagi inner loop flow
-    SP_flow = Atabung*(uPID_level - uPID_level_last)/Ts # ----- BELUM FIX, UBAH BESARAN LEVEL KE FLOW ----------
+    SP_flow = uPID_level * 3.4373813408523457 / 20.022381544041103 # ----- Gain SP, Output Controller Outer Level, diubah ke flow -hasil konsul P.Hady dari Regresi_FT.py
 
     ## ---- KONTROLLER PID INNER LOOP : FLOW CONTROL -------
     e_flow[k] = SP_flow - PV_flow  # dalam cm
@@ -155,7 +155,7 @@ def kontroller():
     e_flow.append(e_flow[k])
     sum_e_flow.append(e_flow[k])
     de_flow.append(e_flow[k])
-    sent = c.write_multiple_registers(16, [int(MV_bit_level), 0])  # list bit pompa dan valve max.4096
+    sent = c.write_multiple_registers(16, [int(MV_bit_flo), 0])  # list bit pompa dan valve max.4096
     # sent = c.write_multiple_registers(16, [4096, 0])  # OPEN LOOP Q_FT
     return PV_flow,PV_level
 
