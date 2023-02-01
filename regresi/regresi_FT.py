@@ -16,6 +16,7 @@ voltOutput_FT[0] = 0.010833905546654421
 t[1] = 88.9720675945282
 level_cm[1] = 20.022381544041103
 flow_sebenarnya[1] = Atabung*(level_cm[1] - level_cm[0])/(t[1] - t[0])*0.06 #dalam lt/min
+print("flow sebenarnya [1] = " + str(flow_sebenarnya[1]))
 voltOutput_FT[1] = 8.19546807049668
 
 # perhitungan pers. garis lurus
