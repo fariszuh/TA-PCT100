@@ -43,11 +43,11 @@ SI_10V = stepinfo(volt_flow_10V(klevelStartNaik_10V:indexSplitMax));
 SI_10V_ss = mean([SI_10V.SettlingMin,SI_10V.SettlingMax])
 % plot(k_10V,ones(length(k_10V),1)*SI_10V_ss,"DisplayName","V_{pompaSS}=10V");
 
-plot(k_2V(1:2100),volt_flow_2V(1:2100),"DisplayName","V_{pompa}=2V");
-plot(k_4V(1:2100),volt_flow_4V(1:2100),"DisplayName","V_{pompa}=4V");
-plot(k_6V(1:2100),volt_flow_6V(1:2100),"DisplayName","V_{pompa}=6V");
-plot(k_8V(1:2100),volt_flow_8V(1:2100),"DisplayName","V_{pompa}=8V");
-plot(k_10V(1:2100),volt_flow_10V(1:2100),"DisplayName","V_{pompa}=10V");
+plot(k_2V(1:2100),volt_flow_2V(1:indexSplitMax),"DisplayName","V_{pompa}=2V");
+plot(k_4V(1:2100),volt_flow_4V(1:indexSplitMax),"DisplayName","V_{pompa}=4V");
+plot(k_6V(1:2100),volt_flow_6V(1:indexSplitMax),"DisplayName","V_{pompa}=6V");
+plot(k_8V(1:2100),volt_flow_8V(1:indexSplitMax),"DisplayName","V_{pompa}=8V");
+plot(k_10V(1:2100),volt_flow_10V(1:indexSplitMax),"DisplayName","V_{pompa}=10V");
 hold off
 % legend;
 
@@ -55,18 +55,17 @@ subplot(2,1,2), title("Level Transmitter vs Input Pompa");
 xlabel('k');
 ylabel('V_{LT} (volt)');
 hold on
-plot(k_2V(1:2100),volt_level_2V(1:2100),"DisplayName","V_{pompa}=2V");
-plot(k_4V(1:2100),volt_level_4V(1:2100),"DisplayName","V_{pompa}=4V");
-plot(k_6V(1:2100),volt_level_6V(1:2100),"DisplayName","V_{pompa}=6V");
-plot(k_8V(1:2100),volt_level_8V(1:2100),"DisplayName","V_{pompa}=8V");
-plot(k_10V(1:2100),volt_level_10V(1:2100),"DisplayName","V_{pompa}=10V");
+plot(k_2V(1:2100),volt_level_2V(1:indexSplitMax),"DisplayName","V_{pompa}=2V");
+plot(k_4V(1:2100),volt_level_4V(1:indexSplitMax),"DisplayName","V_{pompa}=4V");
+plot(k_6V(1:2100),volt_level_6V(1:indexSplitMax),"DisplayName","V_{pompa}=6V");
+plot(k_8V(1:2100),volt_level_8V(1:indexSplitMax),"DisplayName","V_{pompa}=8V");
+plot(k_10V(1:2100),volt_level_10V(1:indexSplitMax),"DisplayName","V_{pompa}=10V");
 hold off
 legend;
 clear folderDatasets folderKarakteristik;
 
 %% MENCARI GAIN SENSOR: LEVEL TRANSMITTER
 mm_level = [80.8, 128.4, 171.5, 208.15, 224]; % mm diambil scr visual
-mm_level = mm_level; 
 G_LT = []; % gain level transmitter
 avg_volt_level = [];
 banyakDataTerakhir = 1;
@@ -112,41 +111,69 @@ legend
 
 global indexSplitMax;
 
-dhdt_2V = dHdT(timestamp_2V,volt_level_2V,klevelStartNaik_2V)
-dhdt_4V = dHdT(timestamp_4V,volt_level_4V,klevelStartNaik_4V)
-dhdt_6V = dHdT(timestamp_6V,volt_level_6V,klevelStartNaik_6V)
-dhdt_8V = dHdT(timestamp_8V,volt_level_8V,klevelStartNaik_8V)
-dhdt_10V = dHdT(timestamp_10V,volt_level_10V,klevelStartNaik_10V)
+mm_level_est_2V = (volt_level_2V + c_LT)/m_LT;
+mm_level_est_4V = (volt_level_4V + c_LT)/m_LT;
+mm_level_est_6V = (volt_level_6V + c_LT)/m_LT;
+mm_level_est_8V = (volt_level_8V + c_LT)/m_LT;
+mm_level_est_10V = (volt_level_10V + c_LT)/m_LT;
+
+dhdt_2V = dHdT(timestamp_2V,mm_level_est_2V,klevelStartNaik_2V)
+dhdt_4V = dHdT(timestamp_4V,mm_level_est_4V,klevelStartNaik_4V)
+dhdt_6V = dHdT(timestamp_6V,mm_level_est_6V,klevelStartNaik_6V)
+dhdt_8V = dHdT(timestamp_8V,mm_level_est_8V,klevelStartNaik_8V)
+dhdt_10V = dHdT(timestamp_10V,mm_level_est_10V,klevelStartNaik_10V)
 
 arr_dhdt = [dhdt_2V, dhdt_4V, dhdt_6V, dhdt_8V, dhdt_10V];
-arr_volt_flow = [SI_2V_ss, SI_4V_ss, SI_6V_ss, SI_8V_ss, SI_10V_ss];3
+arr_volt_flow_ss = [SI_2V_ss, SI_4V_ss, SI_6V_ss, SI_8V_ss, SI_10V_ss];
 
 figure, title("V_{FT} vs dh/dt");
 hold on
 xlabel("dh/dt (mm/s)");
-ylabel("V_{LT} (Volt)");
-scatter(arr_dhdt, arr_volt_flow,"DisplayName","Sampel");
+ylabel("V_{FT} (Volt)");
+scatter(arr_dhdt, arr_volt_flow_ss,"DisplayName","Sampel");
 % hitung persamaan garis lurus untuk konversi mm level ke tegangan V_FT
-m_FT = (arr_volt_flow(5) - arr_volt_flow(1))/(arr_dhdt(5) - arr_dhdt(1));
-c_FT = arr_volt_flow(5) - m_FT*arr_dhdt(5);
+m_FT = (arr_volt_flow_ss(5) - arr_volt_flow_ss(1))/(arr_dhdt(5) - arr_dhdt(1));
+c_FT = arr_volt_flow_ss(1) - m_FT*arr_dhdt(1);
 disp("V_FT(h) = "+ m_FT + " * h " + c_FT);
 
-avg_volt_flow_regresi = m_FT*arr_dhdt + c_FT*ones(1,length(arr_dhdt));
-x = [0 arr_dhdt];
-y = m_FT*[0 arr_dhdt] + c_FT*ones(1,length(x));
-plot(x,y,"DisplayName","Estimasi Regresi");
+x_flow_est = [0 arr_dhdt];
+y_flow_est = m_FT*[0 arr_dhdt] + c_FT*ones(1,length(x_flow_est));
+plot(x_flow_est,y_flow_est,"DisplayName","Estimasi Regresi");
+legend
 hold off
+% penguatan gain flow 
+r_tabung = 90; % dalam mm
+A_tabung = pi*(r_tabung^2);
+G_FT = A_tabung/m_FT;
+% 6 x 10^-2 ialah konversi factor mm3/ms ke lt/min
+Qin_2V = G_FT*volt_flow_2V(1:indexSplitMax)*6*(10^-2);
+Qin_4V = G_FT*volt_flow_4V(1:indexSplitMax)*6*(10^-2);
+Qin_6V = G_FT*volt_flow_6V(1:indexSplitMax)*6*(10^-2);
+Qin_8V = G_FT*volt_flow_8V(1:indexSplitMax)*6*(10^-2);
+Qin_10V = G_FT*volt_flow_10V(1:indexSplitMax)*6*(10^-2);
+
+figure, title("Flow dalam lt/min");
+hold on
+xlabel("k");
+ylabel("Flow (lt/min)");
+plot(k_2V(1:indexSplitMax),Qin_2V,"DisplayName","Flow V_{pompa}=2V");
+plot(k_4V(1:indexSplitMax),Qin_4V,"DisplayName","Flow V_{pompa}=4V");
+plot(k_6V(1:indexSplitMax),Qin_6V,"DisplayName","Flow V_{pompa}=6V");
+plot(k_8V(1:indexSplitMax),Qin_8V,"DisplayName","Flow V_{pompa}=8V");
+plot(k_10V(1:indexSplitMax),Qin_10V,"DisplayName","Flow V_{pompa}=10V");
+hold off
+legend
 
 % % save to .mat untuk econometricModeler, mencari model ARX
 % T_dhdt = [k_4V(1:length(dhdt_4V)), volt_level_4V(1:length(dhdt_4V)), volt_flow_4V(1:length(dhdt_4V)), dhdt_4V];
 % save("sysId_Faris_4V.mat","T_dhdt");
 
 %% DERIVATIVE dh/dt
-function dhdt = dHdT(timestamp, volt_level, klevelStartNaik)
+function dhdt = dHdT(timestamp, mm_level_est, klevelStartNaik)
     global indexSplitMax;
-    dh = volt_level(indexSplitMax) - volt_level(klevelStartNaik);
+    dh = mm_level_est(indexSplitMax) - mm_level_est(klevelStartNaik);
     dt = timestamp(indexSplitMax) - timestamp(klevelStartNaik);    
-    dhdt = dh/dt;
+    dhdt = dh/(dt);
 end
 
 %% LOAD DATASETS
