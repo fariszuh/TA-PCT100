@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move &apos;STM32F4xx_StdPeriph_Driver&apos; to &apos;Core&apos;" description="Move &apos;STM32F4xx_StdPeriph_Driver&apos; to &apos;Core&apos;" destination="Core" element1="Users/Asus/Downloads/stm32-master/libraries/STM32F4xx_StdPeriph_Driver" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1677749732847" updateReferences="true"/>
+</session>

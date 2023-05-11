@@ -1,0 +1,10 @@
+18:11:17 **** Build of configuration Debug for project TA PCT100 no ADS ****
+make -j8 all 
+arm-none-eabi-size   TA\ PCT100\ no\ ADS.elf 
+   text	   data	    bss	    dec	    hex	filename
+  35984	    140	   4596	  40720	   9f10	TA PCT100 no ADS.elf
+Finished building: default.size.stdout
+ 
+
+18:11:19 Build Finished. 0 errors, 0 warnings. (took 1s.521ms)
+

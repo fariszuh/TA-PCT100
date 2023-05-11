@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;MultichannelADC/FATFS/Target/user_diskio_spi&apos; to &apos;user_diskio_spi.h&apos;" description="Rename resource &apos;user_diskio_spi&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="FATFS/Target/user_diskio_spi" name="user_diskio_spi.h" stamp="1678461181223" updateReferences="true"/>
+</session>

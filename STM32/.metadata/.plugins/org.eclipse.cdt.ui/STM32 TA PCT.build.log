@@ -1,0 +1,55 @@
+18:11:13 **** Build of configuration Debug for project STM32 TA PCT ****
+make -j8 all 
+arm-none-eabi-gcc "../Drivers/lwip/src/netif/ppp/auth.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F407xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/lwip/src/netif/ppp/auth.d" -MT"Drivers/lwip/src/netif/ppp/auth.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/lwip/src/netif/ppp/auth.o"
+arm-none-eabi-gcc "../Drivers/lwip/src/netif/ppp/chap.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F407xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/lwip/src/netif/ppp/chap.d" -MT"Drivers/lwip/src/netif/ppp/chap.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/lwip/src/netif/ppp/chap.o"
+arm-none-eabi-gcc "../Drivers/lwip/src/netif/ppp/chpms.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F407xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/lwip/src/netif/ppp/chpms.d" -MT"Drivers/lwip/src/netif/ppp/chpms.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/lwip/src/netif/ppp/chpms.o"
+arm-none-eabi-gcc "../Drivers/lwip/src/netif/ppp/fsm.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F407xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/lwip/src/netif/ppp/fsm.d" -MT"Drivers/lwip/src/netif/ppp/fsm.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/lwip/src/netif/ppp/fsm.o"
+arm-none-eabi-gcc "../Drivers/lwip/src/netif/ppp/ipcp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F407xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/lwip/src/netif/ppp/ipcp.d" -MT"Drivers/lwip/src/netif/ppp/ipcp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/lwip/src/netif/ppp/ipcp.o"
+arm-none-eabi-gcc "../Drivers/lwip/src/netif/ppp/lcp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F407xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/lwip/src/netif/ppp/lcp.d" -MT"Drivers/lwip/src/netif/ppp/lcp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/lwip/src/netif/ppp/lcp.o"
+arm-none-eabi-gcc "../Drivers/lwip/src/netif/ppp/magic.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F407xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/lwip/src/netif/ppp/magic.d" -MT"Drivers/lwip/src/netif/ppp/magic.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/lwip/src/netif/ppp/magic.o"
+arm-none-eabi-gcc "../Drivers/lwip/src/netif/ppp/md5.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F407xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/lwip/src/netif/ppp/md5.d" -MT"Drivers/lwip/src/netif/ppp/md5.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/lwip/src/netif/ppp/md5.o"
+../Drivers/lwip/src/netif/ppp/auth.c:67:10: fatal error: lwip/opt.h: No such file or directory
+   67 | #include "lwip/opt.h"
+      |          ^~~~~~~~~~~~
+compilation terminated.
+../Drivers/lwip/src/netif/ppp/chap.c:69:10: fatal error: lwip/opt.h: No such file or directory
+   69 | #include "lwip/opt.h"
+      |          ^~~~~~~~~~~~
+compilation terminated.
+make: *** [Drivers/lwip/src/netif/ppp/subdir.mk:55: Drivers/lwip/src/netif/ppp/auth.o] Error 1
+make: *** Waiting for unfinished jobs....
+../Drivers/lwip/src/netif/ppp/lcp.c:54:10: fatal error: lwip/opt.h: No such file or directory
+   54 | #include "lwip/opt.h"
+      |          ^~~~~~~~~~~~
+compilation terminated.
+../Drivers/lwip/src/netif/ppp/chpms.c:72:10: fatal error: lwip/opt.h: No such file or directory
+   72 | #include "lwip/opt.h"
+      |          ^~~~~~~~~~~~
+compilation terminated.
+../Drivers/lwip/src/netif/ppp/fsm.c:58:10: fatal error: lwip/opt.h: No such file or directory
+   58 | #include "lwip/opt.h"
+      |          ^~~~~~~~~~~~
+compilation terminated.
+../Drivers/lwip/src/netif/ppp/ipcp.c:52:10: fatal error: lwip/opt.h: No such file or directory
+   52 | #include "lwip/opt.h"
+      |          ^~~~~~~~~~~~
+compilation terminated.
+make: *** [Drivers/lwip/src/netif/ppp/subdir.mk:55: Drivers/lwip/src/netif/ppp/chap.o] Error 1
+make: *** [Drivers/lwip/src/netif/ppp/subdir.mk:55: Drivers/lwip/src/netif/ppp/lcp.o] Error 1
+make: *** [Drivers/lwip/src/netif/ppp/subdir.mk:55: Drivers/lwip/src/netif/ppp/fsm.o] Error 1
+make: *** [Drivers/lwip/src/netif/ppp/subdir.mk:55: Drivers/lwip/src/netif/ppp/ipcp.o] Error 1
+make: *** [Drivers/lwip/src/netif/ppp/subdir.mk:55: Drivers/lwip/src/netif/ppp/chpms.o] Error 1
+../Drivers/lwip/src/netif/ppp/magic.c:52:10: fatal error: lwip/opt.h: No such file or directory
+   52 | #include "lwip/opt.h"
+      |          ^~~~~~~~~~~~
+compilation terminated.
+make: *** [Drivers/lwip/src/netif/ppp/subdir.mk:55: Drivers/lwip/src/netif/ppp/magic.o] Error 1
+../Drivers/lwip/src/netif/ppp/md5.c:34:10: fatal error: lwip/opt.h: No such file or directory
+   34 | #include "lwip/opt.h"
+      |          ^~~~~~~~~~~~
+compilation terminated.
+make: *** [Drivers/lwip/src/netif/ppp/subdir.mk:55: Drivers/lwip/src/netif/ppp/md5.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+
+18:11:16 Build Failed. 17 errors, 0 warnings. (took 3s.596ms)
+

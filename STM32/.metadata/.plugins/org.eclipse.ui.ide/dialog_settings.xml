@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="ExternalProjectImportWizard">
+		<item key="WizardProjectsImportPage.STORE_NESTED_PROJECTS" value="true"/>
+		<item key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID" value="true"/>
+		<item key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED" value="false"/>
+		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
+		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
+		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="D:\OneDrive - Institut Teknologi Sepuluh Nopember\Tugas Akhir\Coding Faris\Serial STM32\MCP4725"/>
+			<item value="D:\OneDrive - Institut Teknologi Sepuluh Nopember\Tugas Akhir\Coding Faris\Serial STM32\mcp4725-master"/>
+		</list>
+		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value=""/>
+			<item value="D:\OneDrive - Institut Teknologi Sepuluh Nopember\Tugas Akhir\Coding Faris\Serial STM32\mcp4725-master"/>
+		</list>
+	</section>
+	<section name="SmartImportWizard">
+		<item key="SmartImportRootWizardPage.STORE_HIDE_ALREADY_OPEN" value="false"/>
+		<item key="SmartImportRootWizardPage.STORE_CLOSE_IMPORTED" value="false"/>
+		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
+		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
+		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="D:\OneDrive - Institut Teknologi Sepuluh Nopember\Tugas Akhir\Coding Faris\Serial STM32\mcp4725-master.zip"/>
+			<item value="D:\OneDrive - Institut Teknologi Sepuluh Nopember\Tugas Akhir\Coding Faris\Serial STM32\mcp4725-master"/>
+			<item value="C:\Users\Asus\Downloads\stm32-multi-channel-adc-main"/>
+			<item value="C:\Users\Asus\Downloads\Multiple-ADC-with-DMA-in-STM32-without-interrupt-main"/>
+		</list>
+	</section>
+	<section name="ChooseWorkspaceDialogSettings">
+		<item key="DIALOG_X_ORIGIN" value="606"/>
+		<item key="DIALOG_Y_ORIGIN" value="266"/>
+	</section>
+	<section name="WORKBENCH_SETTINGS">
+		<list key="ENABLED_TRANSFERS">
+		</list>
+	</section>
+</section>

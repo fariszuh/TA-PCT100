@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move &apos;user_diskio_spi.c&apos; to &apos;Target&apos;" description="Move &apos;user_diskio_spi.c&apos; to &apos;Target&apos;" destination="FATFS/Target" element1="Core/Src/user_diskio_spi.c" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1678270141582" updateReferences="true"/>
+</session>
