@@ -1,0 +1,757 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="63bc5159-0ea1-4c25-a996-2204c0a913cf" name="Changes" comment="code openLoop untuk ambil datasets AO">
+      <change afterPath="$PROJECT_DIR$/Kurva respon DAC.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MATLAB USB-4716/CascadeController.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MATLAB USB-4716/ReadWrite.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MATLAB USB-4716/StaticAO_simple.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/0/4057ad13abe9001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/0/d00afc51f4e8001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/15/9090537d99e9001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/16/8010dc0bf0e8001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/2a/30c4a405b5e9001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/2a/a0fb28adf1e8001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/2e/e00790488ee9001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/3/f0a7d126f1e8001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/30/c0510c7485e9001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/31/30b8104f98e9001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/37/108e52f1fee8001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/38/9019bc668ce9001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/3b/00de26dc9fe9001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/4/0021b891b1e9001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/4/7067800eeee8001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/46/f0b8c53c80e9001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/4b/80dc5c09ece8001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/5/709226ff8ae9001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/53/d0ac7c6a04e9001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/6/0006549f9be9001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/69/a06d3058b3e9001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/73/20acadae7be9001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/79/a0c93f1aebe8001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/85/40e440abfde8001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/91/c0a6506b95e9001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/91/d0003c64fce8001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/9b/e05b838eede8001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/a1/d02c200bebe8001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/a6/c02fe55894e9001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/ae/5092fc10afe9001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/ae/80a867d700e9001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/b1/802d82eaace9001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/b5/30171ea9f0e8001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/c/70b60a6888e9001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/c0/40f049ab92e9001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/c6/30f12461cae9001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/ce/d046834ca9e9001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/d0/605aa47d72e9001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/db/905f7a3faae9001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/db/c00e9f2cb4e9001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/de/100c03cfede8001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/ee/3006243f7ee9001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/ee/40f1d2a89ce9001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/f1/60018d5d9ee9001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/f8/6063cabf79e9001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/fd/308f323087e9001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.history/fd/603f519c71e9001d19919bbb44c4fd25" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.root/36.tree" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Serial STM32/scanI2Carduino.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/STM32/.metadata/.ide.log" beforeDir="false" afterPath="$PROJECT_DIR$/STM32/.metadata/.ide.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/STM32/.metadata/.plugins/com.st.stm32cube.ide.mcu.livewatch/saved_expr.dat" beforeDir="false" afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/com.st.stm32cube.ide.mcu.livewatch/saved_expr.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.cdt.core/.log" beforeDir="false" afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.cdt.core/.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.cdt.core/MultichannelADC.1678450477859.pdom" beforeDir="false" afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.cdt.core/MultichannelADC.1678450477859.pdom" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.cdt.dsf.ui/dialog_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.cdt.dsf.ui/dialog_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.projects/MultichannelADC/.indexes/bf/c4/history.index" beforeDir="false" afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.core.resources/.projects/MultichannelADC/.indexes/bf/c4/history.index" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.ui.workbench.texteditor/dialog_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/STM32/.metadata/.plugins/org.eclipse.ui.workbench.texteditor/dialog_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/closedLoop/testRampMotorDC_SPA.py" beforeDir="false" afterPath="$PROJECT_DIR$/closedLoop/testRampMotorDC_SPA.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+    </option>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2JJ3FR4W6YlhvuxynFYvlBfEYmI" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/OneDrive - Institut Teknologi Sepuluh Nopember/TA PCT100/Coding Faris&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;
+  }
+}</component>
+  <component name="RunManager" selected="Python.regresi_FT">
+    <configuration name="Coding Faris" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="Coding Faris" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/.." />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="regresi_FT" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Coding Faris" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/regresi" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/regresi/regresi_FT.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="sendCommand" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Coding Faris" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Serial STM32" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Serial STM32/sendCommand.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="setup" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Coding Faris" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python-advantech-DAQNavi-bdaqctrl/old/win" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python-advantech-DAQNavi-bdaqctrl/old/win/setup.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Coding Faris" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python-advantech-DAQNavi-bdaqctrl/cffi/lin/abi" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python-advantech-DAQNavi-bdaqctrl/cffi/lin/abi/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="testRampMotorDC_SPA" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Coding Faris" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/closedLoop" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/closedLoop/testRampMotorDC_SPA.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.Coding Faris" />
+      <item itemvalue="Python.regresi_FT" />
+      <item itemvalue="Python.sendCommand" />
+      <item itemvalue="Python.testRampMotorDC_SPA" />
+      <item itemvalue="Python.setup" />
+      <item itemvalue="Python.test" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.regresi_FT" />
+        <item itemvalue="Python.testRampMotorDC_SPA" />
+        <item itemvalue="Python.sendCommand" />
+        <item itemvalue="Python.test" />
+        <item itemvalue="Python.setup" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="63bc5159-0ea1-4c25-a996-2204c0a913cf" name="Changes" comment="" />
+      <created>1671782265473</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1671782265473</updated>
+      <workItem from="1671782290383" duration="2450000" />
+      <workItem from="1671899870778" duration="2689000" />
+      <workItem from="1671970299948" duration="3284000" />
+      <workItem from="1672306094803" duration="7149000" />
+      <workItem from="1672384605666" duration="28339000" />
+      <workItem from="1672499597888" duration="17127000" />
+      <workItem from="1672564111752" duration="9947000" />
+      <workItem from="1672641366426" duration="43111000" />
+      <workItem from="1672728628293" duration="1360000" />
+      <workItem from="1672755472183" duration="9900000" />
+      <workItem from="1672803301276" duration="590000" />
+      <workItem from="1673442662910" duration="5415000" />
+      <workItem from="1673452539934" duration="698000" />
+      <workItem from="1673516589657" duration="11268000" />
+      <workItem from="1673943982247" duration="13026000" />
+      <workItem from="1674022771175" duration="6182000" />
+      <workItem from="1674099305067" duration="6993000" />
+      <workItem from="1674210605300" duration="3872000" />
+      <workItem from="1674387972224" duration="3602000" />
+      <workItem from="1674665184398" duration="4493000" />
+      <workItem from="1674745147422" duration="29650000" />
+      <workItem from="1674914824895" duration="12186000" />
+      <workItem from="1675093170094" duration="15994000" />
+      <workItem from="1675331160535" duration="7141000" />
+      <workItem from="1675370642047" duration="5606000" />
+      <workItem from="1675847771427" duration="3323000" />
+      <workItem from="1676163782121" duration="3295000" />
+      <workItem from="1676289427041" duration="2790000" />
+      <workItem from="1676474732320" duration="1805000" />
+      <workItem from="1676535772772" duration="16812000" />
+      <workItem from="1676599235132" duration="6528000" />
+      <workItem from="1676651614210" duration="1175000" />
+      <workItem from="1676732206078" duration="3477000" />
+      <workItem from="1676814930808" duration="2436000" />
+      <workItem from="1676872615294" duration="12183000" />
+      <workItem from="1676952313310" duration="1282000" />
+      <workItem from="1676967426543" duration="10846000" />
+      <workItem from="1677034473641" duration="13425000" />
+      <workItem from="1677075346720" duration="2349000" />
+      <workItem from="1677087176138" duration="35000" />
+      <workItem from="1677124361558" duration="4617000" />
+      <workItem from="1677157521830" duration="310000" />
+      <workItem from="1677221866145" duration="4344000" />
+      <workItem from="1677255809687" duration="572000" />
+      <workItem from="1677404606587" duration="1014000" />
+      <workItem from="1677474875821" duration="5053000" />
+      <workItem from="1677480812670" duration="2907000" />
+      <workItem from="1677494766131" duration="2657000" />
+      <workItem from="1677649866368" duration="3818000" />
+      <workItem from="1677829206146" duration="2730000" />
+      <workItem from="1678373953656" duration="5821000" />
+      <workItem from="1678789153936" duration="4321000" />
+      <workItem from="1678974587358" duration="2929000" />
+      <workItem from="1679060042643" duration="1247000" />
+      <workItem from="1679238176960" duration="833000" />
+      <workItem from="1679335282787" duration="30000" />
+      <workItem from="1679818853627" duration="1517000" />
+      <workItem from="1680854032296" duration="4480000" />
+      <workItem from="1680885128099" duration="85000" />
+      <workItem from="1681320278973" duration="1601000" />
+      <workItem from="1681889313395" duration="1973000" />
+      <workItem from="1683026343841" duration="3602000" />
+    </task>
+    <task id="LOCAL-00001" summary="change directory from TA PCT100 to Tugas Akhir">
+      <created>1672564170255</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1672564170255</updated>
+    </task>
+    <task id="LOCAL-00002" summary="change directory from TA PCT100 to Tugas Akhir">
+      <created>1672564287486</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1672564287486</updated>
+    </task>
+    <task id="LOCAL-00003" summary="change voltage formula, GUI, timestamp">
+      <created>1672570181732</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1672570181732</updated>
+    </task>
+    <task id="LOCAL-00004" summary="adding data observation for open loop">
+      <created>1672582243293</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1672582243293</updated>
+    </task>
+    <task id="LOCAL-00005" summary="adding level transmitter regression">
+      <created>1672645379516</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1672645379516</updated>
+    </task>
+    <task id="LOCAL-00006" summary="changing desired tank level into 20cm, find m &amp; c">
+      <created>1672658476784</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1672658476784</updated>
+    </task>
+    <task id="LOCAL-00007" summary="changing desired tank level into 20cm, find m &amp; c">
+      <created>1672658494358</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1672658494358</updated>
+    </task>
+    <task id="LOCAL-00008" summary="changing desired tank level into 20cm, substitute m &amp; c">
+      <created>1672658522056</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1672658522056</updated>
+    </task>
+    <task id="LOCAL-00009" summary="[Worked] Koding closed loop Pak Hady Mas Khoiruz">
+      <created>1672670118170</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1672670118170</updated>
+    </task>
+    <task id="LOCAL-00010" summary="[Worked] Koding closed loop Pak Hady Mas Khoiruz">
+      <created>1672670465146</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1672670465146</updated>
+    </task>
+    <task id="LOCAL-00011" summary="adding comment # for scaling vLTfeedback--&gt;level &amp; otherwise for controller output signal">
+      <created>1672695404123</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1672695404124</updated>
+    </task>
+    <task id="LOCAL-00012" summary="adding comment # for scaling vLTfeedback--&gt;level &amp; otherwise for controller output signal">
+      <created>1672695426125</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1672695426125</updated>
+    </task>
+    <task id="LOCAL-00013" summary="program fuzzy closed loop, but false membership function">
+      <created>1672695481991</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1672695481991</updated>
+    </task>
+    <task id="LOCAL-00014" summary="simplify equation">
+      <created>1672695544175</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1672695544175</updated>
+    </task>
+    <task id="LOCAL-00015" summary="test plot skfuzzy membership">
+      <created>1672695571614</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1672695571614</updated>
+    </task>
+    <task id="LOCAL-00016" summary="update closedLoop selasa pagi 5AM">
+      <created>1672699841403</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1672699841403</updated>
+    </task>
+    <task id="LOCAL-00017" summary="adding MQTT feature &amp; its configuration">
+      <created>1672765355823</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1672765355823</updated>
+    </task>
+    <task id="LOCAL-00018" summary="hasil re-run rabu pagi 5AM">
+      <created>1672786419486</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1672786419486</updated>
+    </task>
+    <task id="LOCAL-00019" summary="using azzam membership function">
+      <created>1672786470979</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1672786470979</updated>
+    </task>
+    <task id="LOCAL-00020" summary="update condition timeNow-timeLast">
+      <created>1673445647833</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1673445647833</updated>
+    </task>
+    <task id="LOCAL-00021" summary="update condition timeNow-timeLast">
+      <created>1673516816165</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1673516816165</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Change variable name and adding flow plot (right)">
+      <created>1673953792037</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1673953792037</updated>
+    </task>
+    <task id="LOCAL-00023" summary="add system identification file">
+      <created>1673954496674</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1673954496675</updated>
+    </task>
+    <task id="LOCAL-00024" summary="regresi FT data dr level">
+      <created>1674211109147</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1674211109147</updated>
+    </task>
+    <task id="LOCAL-00025" summary="open csv">
+      <created>1674211157517</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1674211157517</updated>
+    </task>
+    <task id="LOCAL-00026" summary="change datasets directory">
+      <created>1674665866160</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1674665866161</updated>
+    </task>
+    <task id="LOCAL-00027" summary="add multiple subscibe topics">
+      <created>1674665902682</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1674665902682</updated>
+    </task>
+    <task id="LOCAL-00028" summary="change FT transfer function from regression">
+      <created>1674665943230</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1674665943230</updated>
+    </task>
+    <task id="LOCAL-00029" summary="move csv datasets into a new directory">
+      <created>1674665978450</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1674665978450</updated>
+    </task>
+    <task id="LOCAL-00030" summary="configure inner loop, add SP transfer function from flow into level">
+      <created>1674750841474</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1674750841474</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Solved to Subscribe Multiple Topics">
+      <created>1674829452896</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1674829452896</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Add Subscribe Multiple Topics (MFoutput)">
+      <created>1674829481584</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1674829481584</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Add comment QoS">
+      <created>1674835552898</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1674835552898</updated>
+    </task>
+    <task id="LOCAL-00034" summary="change Gain SP flow, output controller Outer level, from regresi_FT.py (hasil konsul P.Hady)">
+      <created>1675277175342</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1675277175342</updated>
+    </task>
+    <task id="LOCAL-00035" summary="add print(flow_sebenarnya) for getting SP inner gain from level loop">
+      <created>1675277267978</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1675277267978</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Initial StepInfo">
+      <created>1675290708830</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1675290708830</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Initial Commit ClosedLoop Bu Tri">
+      <created>1675290774392</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1675290774392</updated>
+    </task>
+    <task id="LOCAL-00038" summary="adding vitechkova, latzel, smith, harriot, krisnaswamy">
+      <created>1677044365318</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1677044365318</updated>
+    </task>
+    <task id="LOCAL-00039" summary="backup for strejc before finding inflexion point">
+      <created>1677052877095</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1677052877095</updated>
+    </task>
+    <task id="LOCAL-00040" summary="backup 14 Maret 2023">
+      <created>1678789375024</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1678789375024</updated>
+    </task>
+    <task id="LOCAL-00041" summary="STM32 bisa receive UART belum bisa parsing, MATLAB USB4716 bisa instant AI-AO">
+      <created>1678977863841</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1678977863841</updated>
+    </task>
+    <task id="LOCAL-00042" summary="STM32 bisa parsing &amp; print float SP, python write serial, MATLAB USB4716 identifikasi AO">
+      <created>1679061336564</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1679061336565</updated>
+    </task>
+    <task id="LOCAL-00043" summary="STM32 changed bit into volt">
+      <created>1679238399868</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1679238399868</updated>
+    </task>
+    <task id="LOCAL-00044" summary="initial closed loop MATLAB cascade">
+      <created>1679836589947</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1679836589947</updated>
+    </task>
+    <task id="LOCAL-00045" summary="using 2 DAC i2c1">
+      <created>1681889755696</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1681889755696</updated>
+    </task>
+    <task id="LOCAL-00046" summary="worked when integrated testing with PCT control box">
+      <created>1683027033787</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1683027033787</updated>
+    </task>
+    <task id="LOCAL-00047" summary="code openLoop untuk ambil datasets AO">
+      <created>1683132444557</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1683132444557</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="add system identification file" />
+    <MESSAGE value="regresi FT data dr level" />
+    <MESSAGE value="open csv" />
+    <MESSAGE value="change datasets directory" />
+    <MESSAGE value="add multiple subscibe topics" />
+    <MESSAGE value="change FT transfer function from regression" />
+    <MESSAGE value="move csv datasets into a new directory" />
+    <MESSAGE value="configure inner loop, add SP transfer function from flow into level" />
+    <MESSAGE value="Solved to Subscribe Multiple Topics" />
+    <MESSAGE value="Add Subscribe Multiple Topics (MFoutput)" />
+    <MESSAGE value="Add comment QoS" />
+    <MESSAGE value="change Gain SP flow, output controller Outer level, from regresi_FT.py (hasil konsul P.Hady)" />
+    <MESSAGE value="add print(flow_sebenarnya) for getting SP inner gain from level loop" />
+    <MESSAGE value="Initial StepInfo" />
+    <MESSAGE value="Initial Commit ClosedLoop Bu Tri" />
+    <MESSAGE value="adding vitechkova, latzel, smith, harriot, krisnaswamy" />
+    <MESSAGE value="backup for strejc before finding inflexion point" />
+    <MESSAGE value="backup 14 Maret 2023" />
+    <MESSAGE value="STM32 bisa receive UART belum bisa parsing, MATLAB USB4716 bisa instant AI-AO" />
+    <MESSAGE value="STM32 bisa parsing &amp; print float SP, python write serial, MATLAB USB4716 identifikasi AO" />
+    <MESSAGE value="STM32 changed bit into volt" />
+    <MESSAGE value="initial closed loop MATLAB cascade" />
+    <MESSAGE value="using 2 DAC i2c1" />
+    <MESSAGE value="worked when integrated testing with PCT control box" />
+    <MESSAGE value="code openLoop untuk ambil datasets AO" />
+    <option name="LAST_COMMIT_MESSAGE" value="code openLoop untuk ambil datasets AO" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main.py</url>
+          <line>8</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/closedLoop/systemIdentification.py</url>
+          <line>372</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Coding_Faris$test_serial.coverage" NAME="test_serial Coverage Results" MODIFIED="1672455238600" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../Anargya/File Utama LV/File Pekerjaan/Digital/Monitoring/Gen 4/TelemetryBerhasil15Oktober" />
+    <SUITE FILE_PATH="coverage/Coding_Faris$GUI_openLoop.coverage" NAME="GUI_openLoop Coverage Results" MODIFIED="1672561689922" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Python GUI" />
+    <SUITE FILE_PATH="coverage/Coding_Faris$read_ModbusTCP.coverage" NAME="read_ModbusTCP Coverage Results" MODIFIED="1672469188972" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/GUI_openLoop_py$readStreamModbus.coverage" NAME="readStreamModbus Coverage Results" MODIFIED="1677485422076" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/closedLoop" />
+    <SUITE FILE_PATH="coverage/GUI_openLoop_py$closedLoop_fuzzy_azzam.coverage" NAME="closedLoop_fuzzy_azzam Coverage Results" MODIFIED="1672786347651" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/closedLoop" />
+    <SUITE FILE_PATH="coverage/GUI_openLoop_py$read_ModbusTCP.coverage" NAME="read_ModbusTCP Coverage Results" MODIFIED="1672569259959" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/GUI_openLoop_py$regresi_FT.coverage" NAME="regresi_FT Coverage Results" MODIFIED="1681320515612" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/regresi" />
+    <SUITE FILE_PATH="coverage/Coding_Faris$FigureCanvas.coverage" NAME="FigureCanvas Coverage Results" MODIFIED="1672502275773" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Python GUI" />
+    <SUITE FILE_PATH="coverage/Coding_Faris$openLoop_level.coverage" NAME="openLoop_level Coverage Results" MODIFIED="1672470679526" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/GUI_openLoop_py$Close_Loop_Fuzzy_Multiple_Subscibe.coverage" NAME="Close Loop Fuzzy Multiple Subscibe Coverage Results" MODIFIED="1674750295318" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/closedLoop/multiple subscribe fuzzy" />
+    <SUITE FILE_PATH="coverage/GUI_openLoop_py$systemIdentification.coverage" NAME="systemIdentification Coverage Results" MODIFIED="1677222036283" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/closedLoop" />
+    <SUITE FILE_PATH="coverage/GUI_openLoop_py$plot_fuzzy_membership.coverage" NAME="plot_fuzzy_membership Coverage Results" MODIFIED="1672677999577" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Coding_Faris$test.coverage" NAME="test Coverage Results" MODIFIED="1672484379935" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/GUI_openLoop_py$readSecond.coverage" NAME="readSecond Coverage Results" MODIFIED="1672567199700" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/readTime" />
+    <SUITE FILE_PATH="coverage/GUI_openLoop_py$regresi_LT.coverage" NAME="regresi_LT Coverage Results" MODIFIED="1672667209987" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/regresi" />
+    <SUITE FILE_PATH="coverage/Coding_Faris$main.coverage" NAME="Coding Faris Coverage Results" MODIFIED="1671784442308" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/.." />
+    <SUITE FILE_PATH="coverage/GUI_openLoop_py$testTs.coverage" NAME="testTs Coverage Results" MODIFIED="1677503794110" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/closedLoop" />
+    <SUITE FILE_PATH="coverage/GUI_openLoop_py$testMQTT.coverage" NAME="testMQTT Coverage Results" MODIFIED="1674802537375" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/MQTT" />
+    <SUITE FILE_PATH="coverage/Coding_Faris$save_data.coverage" NAME="save_data Coverage Results" MODIFIED="1672504148407" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/write_csv" />
+    <SUITE FILE_PATH="coverage/Coding_Faris$save_data_fopen.coverage" NAME="save_data_fopen Coverage Results" MODIFIED="1672542013862" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/write_csv" />
+    <SUITE FILE_PATH="coverage/GUI_openLoop_py$testUDPmodbus2.coverage" NAME="testUDPmodbus2 Coverage Results" MODIFIED="1677498839616" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/closedLoop" />
+    <SUITE FILE_PATH="coverage/GUI_openLoop_py$setup.coverage" NAME="setup Coverage Results" MODIFIED="1677669421356" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python-advantech-DAQNavi-bdaqctrl/old/win" />
+    <SUITE FILE_PATH="coverage/Coding_Faris$plotWindow.coverage" NAME="plotWindow Coverage Results" MODIFIED="1672469343881" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Modbus Slave" />
+    <SUITE FILE_PATH="coverage/Coding_Faris$real_time_plot_gui.coverage" NAME="real_time_plot_gui Coverage Results" MODIFIED="1672414738896" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Python GUI" />
+    <SUITE FILE_PATH="coverage/GUI_openLoop_py$openLoop_level_flow.coverage" NAME="openLoop_level_flow Coverage Results" MODIFIED="1677479137715" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/closedLoop" />
+    <SUITE FILE_PATH="coverage/GUI_openLoop_py$closedLoop_level_buTri.coverage" NAME="closedLoop_level_buTri Coverage Results" MODIFIED="1675331708406" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/closedLoop" />
+    <SUITE FILE_PATH="coverage/Coding_Faris$test_tkinter.coverage" NAME="test_tkinter Coverage Results" MODIFIED="1672550297463" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Python GUI" />
+    <SUITE FILE_PATH="coverage/GUI_openLoop_py$testRampMotorDC_SPA.coverage" NAME="testRampMotorDC_SPA Coverage Results" MODIFIED="1680858494884" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/closedLoop" />
+    <SUITE FILE_PATH="coverage/GUI_openLoop_py$GUI_openLoop.coverage" NAME="GUI_openLoop Coverage Results" MODIFIED="1672646040462" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Python GUI" />
+    <SUITE FILE_PATH="coverage/GUI_openLoop_py$MQTTtestMultipleSubscribe.coverage" NAME="MQTTtestMultipleSubscribe Coverage Results" MODIFIED="1674828211340" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/closedLoop/multiple subscribe fuzzy" />
+    <SUITE FILE_PATH="coverage/GUI_openLoop_py$closedLoop_level.coverage" NAME="closedLoop_level Coverage Results" MODIFIED="1673952933339" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/closedLoop" />
+    <SUITE FILE_PATH="coverage/GUI_openLoop_py$test.coverage" NAME="test Coverage Results" MODIFIED="1677830631206" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python-advantech-DAQNavi-bdaqctrl/cffi/lin/abi" />
+    <SUITE FILE_PATH="coverage/GUI_openLoop_py$sendCommand.coverage" NAME="sendCommand Coverage Results" MODIFIED="1679060943504" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Serial STM32" />
+    <SUITE FILE_PATH="coverage/Coding_Faris$read_modbus.coverage" NAME="read_modbus Coverage Results" MODIFIED="1671901382676" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/GUI_openLoop_py$testUDPmasAdrian.coverage" NAME="testUDPmasAdrian Coverage Results" MODIFIED="1677484780920" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/closedLoop" />
+    <SUITE FILE_PATH="coverage/GUI_openLoop_py$closedLoop_fuzzy.coverage" NAME="closedLoop_fuzzy Coverage Results" MODIFIED="1675375775220" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/closedLoop" />
+  </component>
+</project>

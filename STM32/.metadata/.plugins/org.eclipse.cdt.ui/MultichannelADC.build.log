@@ -1,10 +1,10 @@
-23:15:05 **** Incremental Build of configuration Debug for project MultichannelADC ****
+17:03:33 **** Incremental Build of configuration Debug for project MultichannelADC ****
 make -j8 all 
 arm-none-eabi-size   MultichannelADC.elf 
    text	   data	    bss	    dec	    hex	filename
-  65244	    596	   3804	  69644	  1100c	MultichannelADC.elf
+  65108	    596	   3812	  69516	  10f8c	MultichannelADC.elf
 Finished building: default.size.stdout
  
 
-23:15:07 Build Finished. 0 errors, 0 warnings. (took 1s.190ms)
+17:03:34 Build Finished. 0 errors, 0 warnings. (took 1s.33ms)
 
