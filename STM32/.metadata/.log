@@ -5840,3 +5840,36 @@ localhost:61234: The system tried to join a drive to a directory on a joined dri
 java.lang.Exception: localhost:61234: The system tried to join a drive to a directory on a joined drive.
 	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1014)
 	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:843)
+!SESSION 2023-05-30 22:36:52.171 -----------------------------------------------
+eclipse.buildId=Version 1.8.0
+java.version=11.0.11
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_ID
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2023-05-30 22:37:00.786
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2023-05-30 22:37:23.664
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2023-05-30 22:37:24.094
+!MESSAGE Log4j initialized with config file D:\OneDrive - Institut Teknologi Sepuluh Nopember\Tugas Akhir\Coding Faris\STM32\.metadata\.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2023-05-30 22:38:20.672
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2023-06-02 20:07:15.234 -----------------------------------------------
+eclipse.buildId=Version 1.8.0
+java.version=11.0.11
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_ID
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2023-06-02 20:07:55.598
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2023-06-02 20:07:56.177
+!MESSAGE Log4j initialized with config file D:\OneDrive - Institut Teknologi Sepuluh Nopember\Tugas Akhir\Coding Faris\STM32\.metadata\.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2023-06-02 20:08:24.091
+!MESSAGE Started RMI Server, listening on port 41337
