@@ -1,0 +1,104 @@
+#include<stdio.h>    
+#include<stdlib.h>
+#include<stdint.h>
+#include <math.h>
+
+int main(){  
+    // ref: https://www.programiz.com/c-programming/examples/matrix-multiplication
+    // VOID SETUP
+    
+    // Initialize matrix for weight input and hidden layer
+    uint8_t num_neuronHidden = 3; // sebagai baris
+    uint8_t num_neuronInput = 3; // sebagai kolom
+    // baris: neuronHidden ke-, kolom: neuronInput ke-
+    float w_input[num_neuronHidden][num_neuronInput];
+    float v_hidden[num_neuronHidden];
+    float delta2[num_neuronHidden], hj[num_neuronHidden];
+    float x_input[num_neuronInput];
+    
+    // Generate random 0-1 for initial weight and 
+    for(int neuronHidden=0; neuronHidden<num_neuronHidden; ++neuronHidden){
+        v_hidden[neuronHidden] = (float)rand()/RAND_MAX;
+        printf("v_hidden[%d] = %f \n",neuronHidden,v_hidden[neuronHidden]);
+        delta2[neuronHidden] = 0;
+        hj[neuronHidden] = 0;
+        
+        for(int neuronInput=0; neuronInput<num_neuronInput; ++neuronInput){
+            if(neuronHidden == 0){
+                x_input[neuronInput] = 0;
+            }
+            w_input[neuronHidden][neuronInput] = (float)rand()/RAND_MAX;
+            printf("w [%d][%d] = %f \n",neuronHidden,neuronInput,w_input[neuronHidden][neuronInput]);
+        }
+        printf("delta2[%d] = %f \n",neuronHidden,delta2[neuronHidden]);
+        printf("hj[%d] = %f \n",neuronHidden,hj[neuronHidden]);
+    }
+    // Initialize learning rate, alpha, & delta1
+    float lr = 0.01;
+    float alpha = 0.008;
+    float delta1 = 0;
+    
+    printf("alpha = %f \n", alpha);
+    // Initialize error
+    float e_0, e_1, e_2 = 0;
+    printf("e(k) = %f \n",e_0);
+    printf("e(k-1) = %f \n",e_1);
+    printf("e(k-2) = %f \n",e_2);
+    
+    // WHILE LOOPS
+    // FORWARD PROPAGATION
+    float r = 0; // jumlahan v_hidden*hj_hidden
+    for(int neuronHidden=0; neuronHidden<num_neuronHidden; ++neuronHidden){
+        // Mencari output tiap neuron di hidden layer
+        float Sj = 0; // jumlahan w_input*x_input pada tiap neuron hidden
+        for(int neuronInput=0; neuronInput<num_neuronInput; ++neuronInput){
+            Sj = w_input[neuronHidden][neuronInput]*x_input[neuronInput];
+            hj[neuronHidden] = 1/(1 + exp(-1*Sj));
+        }
+        // Hitung hj yg baru diperoleh, dikali weight
+        r = r + v_hidden[neuronHidden]*hj[neuronHidden];
+    }
+    u = 1/(1 + exp(-1*r));
+    
+    // BACKWARD PROPAGATION
+    lr = lr + alpha*abs(e_0);
+    delta1 = e_0*u*(1-u);
+    dey_deu = 1;
+    for(int neuronHidden=0; neuronHidden<num_neuronHidden; ++neuronHidden){
+        v_hidden[neuronHidden] = v_hidden[neuronHidden] + lr*dey_deu*delta1* hj[neuronHidden];
+        delta2[neuronHidden] = delta1*v_hidden[neuronHidden]*hj(neuronHidden)*(1 - hj(neuronHidden));
+        
+        for(int neuronInput=0; neuronInput<num_neuronInput; ++neuronInput){
+            w_input[neuronHidden][neuronInput] = w_input[neuronHidden][neuronInput] + lr*dey_deu*delta2(neuronHidden)*x_input(neuronInput);
+        }
+    }
+    
+    // Reupdating error
+    e_2 = e_1;
+    e_1 = e_0;
+    /*
+    uint8_t column_x_input = 3; // jumlah input
+    float x_input[1][] = 
+    for(int j_hiddenLayer=0; j_hiddenLayer<column_v_hidden; j_hiddenLayer++){
+        Sj = w_input(j) 
+        hj
+    }
+    
+    /*
+    // Calculate matrix multiplication
+    for(int i=0; i<row_w_input; ++i){
+        for(int j=0; j<column_w_input; ++j){
+            for(int k=0; k<column_v_hidden; ++k){
+                // w_input[i][j] = (float)rand()/RAND_MAX;
+                n++;
+                // printf("n = %d; w_input(%d,%d) = %f \n",n,i,j,w_input[i][j]);
+                printf("n = %d; w_input(%d,%d) = a(%d,%d)*b(%d,%d) \n",n,i,j,i,k,k,j);
+            }
+        }
+        v_hidden[1,i] = 
+    }
+    */
+    
+    
+    return 0;  
+}  
