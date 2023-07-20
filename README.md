@@ -15,7 +15,13 @@ Tahap ini model plant diambil menggunakan identifikasi plant dan penurunan rumus
   - Static_AO_custom.m : perubahan Static_AO.m agar bisa mengirim sinyal berubah2 (tidak terbatas default sawtooth, sine, square, dll)
   - Static_AO_simple.m : simplifikasi dari Static_AO_custom.m
 + /LabVIEW : (abaikan) hanya file backup belajar LabVIEW
-
++ /python-advantech-DAQNavi-bdaqctrl : Library python untuk USB-4716, masih perlu compiler dari C ke python
++ /regresi : regresi respon level dan flow untuk mendapat gain scaling transmitter
+  - regresi_FT.m : mencari gain flow meter untuk mengubah tegangan volt ke debit liter/menit (lt/min)
+  - regresi_LT.m : mencari gain level sensor untuk mengubah tegangan volt ke level (mm)
++ /write_csv : testing program python data logger
+  - save_data_fopen.py : test buka data csv menggunakan fungsi fopen()
+  - save_data_withopen.py : test buka data csv menggunakan fungsi withopen()
 ## 2. Tahap Simulasi
 Model yang telah diperoleh pada tahap sebelumnya digunakan untuk desain kontroler. 
 + /MATLAB : Simulasi kontroler berdasarkan model
@@ -45,7 +51,7 @@ Model yang telah diperoleh pada tahap sebelumnya digunakan untuk desain kontrole
       * testTs.py : pengujian untuk memperkecil timesampling Ts Modbus UDP DAQ ADAM4000L
       * testUDPmasAdrian.py : ambil data informasi AI UDP
       * testUDPmodbus2.py : ambil data informasi AI UDP dengan algoritma lain
-  - 
+ 
 + /MQTT : Implementasi MQTT untuk kontroler fuzzy
   - testMQTT.py : implementasi python dengan app IoT MQTT Panel (playstore)
 
