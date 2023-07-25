@@ -1,9 +1,8 @@
 # TA-PCT100
 Repository ini berisi file tugas akhir Implementasi PCT-100
-File yang tersedia berisi file program TA yang dibuat Faris, dengan judul berikut:
-1. M. Faris Zuhairi (2019/Wisudawan 128)
-2. Khoiruz Fauzi Rahmadhani (2018/Wisudawan 127)
-3. M. Rafif Firdiansyah (2019/Wisudawan 127)
+File yang tersedia berisi file program TA yang dibuat Penulis Muhammad Faris Zuhairi (2019/Wisudawan 128), 
+dengan judul berikut:
+PERANCANGAN KONTROLER TERTANAM MENGGUNAKAN DIRECT NEURAL NETWORK UNTUK PENGATURAN LEVEL TANGKI PCT-100
 
 ## 1. Tahap Permodelan
 Tahap ini model plant diambil menggunakan identifikasi plant dan penurunan rumus. 
