@@ -1,0 +1,6 @@
+1. delay di input HP ke plant brp? ada rumus TF: e^-ts (time delay system untuk MQTT)
+2. disuruh inputkan pid n fuzzy dr HP. 
+3. model tidak dipermasalahkan. jgn cari monitoring aja di HP tapi disuruh kontrolnya via HP
+4. metode kontrol samsek ditanyakan.
+5. kenapa ambil level? jawab via sistem
+6. 

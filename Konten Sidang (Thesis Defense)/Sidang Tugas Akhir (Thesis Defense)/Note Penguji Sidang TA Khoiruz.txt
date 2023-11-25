@@ -1,0 +1,7 @@
+1. TF harus pake statespace model
+2. cascade setidaknya variabel yg dikontrol flow dan level (MIMO) bukan SISO.
+3. Tuning PID harus dibandingkan dgn conventional ziegler nichols, conventional narik garris. 
+Kp ziegler didekatin dgn Kp PSO
+4. Implementasi: aktuatornya 1, yaitu pompa. pompa hanya kontrol level. 
+Mintanya p ari kontrol flow, pasti harus ada aktuator lain, agar tidak SISO, seperti Valve.
+5. P&ID salah gambar -bu tri, gaadda electric signal ke pump.
