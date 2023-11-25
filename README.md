@@ -54,6 +54,12 @@ Model yang telah diperoleh pada tahap sebelumnya digunakan untuk desain kontrole
 + /MQTT : Implementasi MQTT untuk kontroler fuzzy
   - testMQTT.py : implementasi python dengan app IoT MQTT Panel (playstore)
 
+## Team's Documentation
+1. [28/03/2023 - Part 1 Paparan Progress Bimbingan TA PCT-100 at 23:24:33] https://youtu.be/hUXw9mhMRqU
+2. [28/03/2023 - Part 2 Paparan Progress Bimbingan TA PCT-100 at 23:34:30] https://youtube.com/shorts/yUkm82Lsc_I
+3. [28/03/2023 - Part 3 Paparan Progress Bimbingan TA PCT-100 at 23:35:58] https://youtu.be/i6Gw3u0Zylg
+4. [28/03/2023 - Part 4 Paparan Progress Bimbingan TA PCT-100 at 23:44:26] https://youtu.be/1I7eSQTP36s
+5. [29/03/2023 - Part 5 Paparan Progress Bimbingan TA PCT-100 at 23:04:08] https://youtu.be/HnbYzEy3LrQ
 
 ### Disclaimer
 Apabila terdapat kebingungan pada program/struktur repository, silahkan menghubungi author IDLINE: fariszuh
