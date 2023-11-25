@@ -54,7 +54,12 @@ Model yang telah diperoleh pada tahap sebelumnya digunakan untuk desain kontrole
 + /MQTT : Implementasi MQTT untuk kontroler fuzzy
   - testMQTT.py : implementasi python dengan app IoT MQTT Panel (playstore)
 
-## Team's Documentation
+## Documentation
+### Faris's NN Implementation Video (showed during Final Project Presentation/Sidang TA)
+1. PCT100 with constant Set Point https://www.youtube.com/watch?v=iwgPA4LB7lY&ab_channel=MuhammadFarisZuhairi
+2. PCT100 with Increasing-Decreasing Set Point (step 50mm) https://www.youtube.com/watch?v=AL7DxppEuDM&ab_channel=MuhammadFarisZuhairi
+
+### Team's Documentation
 1. [28/03/2023 - Part 1 Paparan Progress Bimbingan TA PCT-100 at 23:24:33] https://youtu.be/hUXw9mhMRqU
 2. [28/03/2023 - Part 2 Paparan Progress Bimbingan TA PCT-100 at 23:34:30] https://youtube.com/shorts/yUkm82Lsc_I
 3. [28/03/2023 - Part 3 Paparan Progress Bimbingan TA PCT-100 at 23:35:58] https://youtu.be/i6Gw3u0Zylg
