@@ -1,0 +1,11 @@
+clear; clc; clf
+Fx_kiri = importdata("Data Point Kiri.txt");
+voltValve = Fx_kiri(:,1);
+Kv_per_Kvs = Fx_kiri(:,2);
+clear Fx_kiri;
+plot(voltValve,Kv_per_Kvs);
+
+voltInput = 5;
+for i=1:length(voltValve)
+    if voltInput >= voltValve(i)
+end

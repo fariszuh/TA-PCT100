@@ -1,0 +1,145 @@
+clear; clc; close all;
+out1 = load('SP=dynamic_MOV=dynamic_lrinit=1e-05_alpha=0.0001.mat');
+mmlevel1 = out1.mmlevel;
+persen_bukaanValve1 = out1.persen_bukaanValve;
+step_SPlevel1 = out1.step_SPlevel;
+t_simulink1 = out1.t_simulink;
+u_valve1 = out1.u_Vfc;
+t_valve1 = linspace(0,max(t_simulink1),length(u_valve1));
+lr1 = out1.lr_save;
+SE1 = ((out1.error).^2);
+error1 = 0.5*SE1;
+
+out2 = load('SP=dynamic_MOV=dynamic_lrinit=1e-05_alpha=0.001.mat');
+mmlevel2 = out2.mmlevel;
+persen_bukaanValve2 = out2.persen_bukaanValve;
+step_SPlevel2 = out2.step_SPlevel;
+t_simulink2 = out2.t_simulink;
+u_valve2 = out2.u_Vfc;
+t_valve2 = linspace(0,max(t_simulink2),length(u_valve2));
+lr2 = out2.lr_save;
+SE2 = ((out2.error).^2);
+error2 = 0.5*SE2;
+
+out3 = load('SP=dynamic_MOV=dynamic_lrinit=1e-05_alpha=0.01.mat');
+mmlevel3 = out3.mmlevel;
+persen_bukaanValve3 = out3.persen_bukaanValve;
+step_SPlevel3 = out3.step_SPlevel;
+t_simulink3 = out3.t_simulink;
+u_valve3 = out3.u_Vfc;
+t_valve3 = linspace(0,max(t_simulink3),length(u_valve3));
+lr3 = out3.lr_save;
+SE3 = ((out3.error).^2);
+error3 = 0.5*SE3;
+
+out4 = load('SP=dynamic_MOV=dynamic_lrinit=1e-05_alpha=0.1.mat');
+mmlevel4 = out4.mmlevel;
+persen_bukaanValve4 = out4.persen_bukaanValve;
+step_SPlevel4 = out4.step_SPlevel;
+t_simulink4 = out4.t_simulink;
+u_valve4 = out4.u_Vfc;
+t_valve4 = linspace(0,max(t_simulink4),length(u_valve4));
+lr4 = out4.lr_save;
+SE4 = ((out4.error).^2);
+error4 = 0.5*SE4;
+
+out5 = load('SP=dynamic_MOV=dynamic_lrinit=1e-05_alpha=1.mat');
+mmlevel5 = out5.mmlevel;
+persen_bukaanValve5 = out5.persen_bukaanValve;
+step_SPlevel5 = out5.step_SPlevel;
+t_simulink5 = out5.t_simulink;
+u_valve5 = out5.u_Vfc;
+t_valve5 = linspace(0,max(t_simulink5),length(u_valve5));
+lr5 = out5.lr_save;
+SE5 = ((out5.error).^2);
+error5 = 0.5*SE5;
+
+% out6 = load('SP=dynamic_MOV=0.5_lrinit=1e-05_alpha=2.mat');
+% mmlevel6 = out6.mmlevel;
+% persen_bukaanValve6 = out6.persen_bukaanValve;
+% step_SPlevel6 = out6.step_SPlevel;
+% t_simulink6 = out6.t_simulink;
+% u_valve6 = out6.u_Vfc;
+% t_valve6 = linspace(0,max(t_simulink6),length(u_valve6));
+% lr6 = out6.lr_save;
+% 
+% out7 = load('SP=dynamic_MOV=0.5_lrinit=1e-05_alpha=5.mat');
+% mmlevel7 = out7.mmlevel;
+% persen_bukaanValve7 = out7.persen_bukaanValve;
+% step_SPlevel7 = out7.step_SPlevel;
+% t_simulink7 = out7.t_simulink;
+% u_valve7 = out7.u_Vfc;
+% t_valve7 = linspace(0,max(t_simulink7),length(u_valve7));
+% lr7 = out7.lr_save;
+
+%%
+figure;
+hold on;
+title("Plot Tracking Step Level, Variasi Alpha");
+xlabel("t (detik)");
+ylabel("Level (mm)");
+plot(t_simulink1,mmlevel1,"DisplayName","Level saat alpha=0.0001");
+plot(t_simulink2,mmlevel2,"DisplayName","Level saat alpha=0.001");
+plot(t_simulink3,mmlevel3,"DisplayName","Level saat alpha=0.01");
+plot(t_simulink4,mmlevel4,"DisplayName","Level saat alpha=0.1");
+plot(t_simulink5,mmlevel5,"DisplayName","Level saat alpha=1");
+% plot(t_simulink6,mmlevel6,"DisplayName","Level saat alpha=2");
+% plot(t_simulink7,mmlevel7,"DisplayName","Level saat alpha=5");
+plot(t_simulink1,step_SPlevel1,"DisplayName","Set Point");
+legend;
+hold off;
+
+figure;
+hold on;
+title("Plot u_{flow valve} Tracking Step Level, Variasi Alpha");
+xlabel("t (detik)");
+ylabel("Tegangan Flow Valve (volt)");
+plot(t_valve5,u_valve5,'yellow',"DisplayName","u_{flow valve} saat alpha=1");
+plot(t_valve4,u_valve4,'cyan',"DisplayName","u_{flow valve} saat alpha=0.1");
+plot(t_valve3,u_valve3,'green',"DisplayName","u_{flow valve} saat alpha=0.01");
+plot(t_valve2,u_valve2,'blue',"DisplayName","u_{flow valve} saat alpha=0.001");
+plot(t_valve1,u_valve1,'red',"DisplayName","u_{flow valve} saat alpha=0.0001");
+% plot(t_valve6,u_valve6,"DisplayName","u_{flow valve} saat lr=5");
+% plot(t_valve7,u_valve7,"DisplayName","u_{flow valve} saat lr=10");
+legend;
+hold off;
+
+figure;
+hold on;
+title("Plot Learning Rate Tracking Step Level, Variasi Alpha");
+xlabel("t (detik)");
+ylabel("Learning Rate");
+plot(t_valve1,lr1,"DisplayName","alpha=0.0001");
+plot(t_valve2,lr2,"DisplayName","alpha=0.001");
+plot(t_valve3,lr3,"DisplayName","alpha=0.01");
+plot(t_valve4,lr4,"DisplayName","alpha=0.1");
+plot(t_valve5,lr5,"DisplayName","alpha=1");
+% plot(t_valve6,u_valve6,"DisplayName","u_{flow valve} lr=5");
+% plot(t_valve7,u_valve7,"DisplayName","u_{flow valve} lr=10");
+legend;
+hold off;
+
+f = figure;
+f.Position = [200 200 500 200];
+hold on;
+title("Plot Square Error Tracking Step Level, Variasi Alpha");
+xlabel("t (detik)");
+ylabel("Square Error (mm^2)");
+plot(t_simulink1,SE1,"DisplayName","SE alpha=0.0001");
+plot(t_simulink2,SE2,"DisplayName","SE alpha=0.001");
+plot(t_simulink3,SE3,"DisplayName","SE alpha=0.01");
+plot(t_simulink4,SE4,"DisplayName","SE alpha=0.1");
+plot(t_simulink5,SE5,"DisplayName","SE alpha=1");
+% plot(t_simulink6,SE6,"DisplayName","SE alpha=2");
+% plot(t_simulink7,SE7,"DisplayName","SE alpha=5");
+% plot(t_simulink1,step_SPlevel1,"DisplayName","Set Point");
+legend;
+hold off;
+% CALCULATE TOTAL COST FUNCTION: Jtotal
+J_error1 = sum(error1)
+J_error2 = sum(error2)
+J_error3 = sum(error3)
+J_error4 = sum(error4)
+J_error5 = sum(error5)
+% J_error6 = sum(error6)
+% J_error7 = sum(error7)
