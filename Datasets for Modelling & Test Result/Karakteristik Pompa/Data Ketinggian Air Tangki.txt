@@ -1,0 +1,7 @@
+DATA KETINGGIAN DIAMBIL SECARA VISUAL DENGAN PENGGARIS
+
+2Vpompa_22Vfc = 0 - 80.8mm
+4Vpompa_22Vfc = 0 - 128.4mm
+6Vpompa_22Vfc = 0 - 171.5mm
+8Vpompa_22Vfc = 0 - 208.15mm
+10Vpompa_22Vfc = 0 - 224.0mm

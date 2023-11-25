@@ -1,0 +1,5 @@
+Pengujian AO dilakukan melalui tahapan/timelapse berikut
+1. AI STM32 di run, di resume debug, kemudian AO USB4716 di run. sesaat AO USB4716 langsung memberi sinyal ramp
+2. AO USB4716 saat >60s saturasi di 10VDC,
+3. AO USB4716 akan turun saat >66s hingga 0s
+4. STM32 me-eject/unmount sd card saat diffTime=150000ms

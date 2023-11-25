@@ -1,0 +1,43 @@
+DATA KETINGGIAN DIAMBIL SECARA VISUAL DENGAN PENGGARIS
+
+2Vpompa_10Vfc = 0 - 0mm
+2Vpompa_12Vfc = 0 - 0mm
+2Vpompa_15Vfc = 0 - 79.6mm
+2Vpompa_18Vfc = 0 - 81.4mm
+2Vpompa_21Vfc = 0 - 81.3mm
+
+4Vpompa_10Vfc = 0 - 5.2mm
+4Vpompa_12Vfc = 0 - 12.1mm
+4Vpompa_15Vfc = 0 - 126.2mm
+4Vpompa_18Vfc = 0 - 136.2mm
+4Vpompa_21Vfc = 0 - 130.7mm
+
+6Vpompa_10Vfc = 0 - 5.4mm
+6Vpompa_12Vfc = 0 - 5.4mm
+6Vpompa_15Vfc = 0 - 149.35mm
+6Vpompa_18Vfc = 0 - 172.3mm
+6Vpompa_21Vfc = 0 - 172.5mm
+
+8Vpompa_10Vfc = 0 - 5mm
+8Vpompa_12Vfc = 0 - 10.8mm
+8Vpompa_15Vfc = 0 - 189mm
+8Vpompa_18Vfc = 0 - 213.2mm
+8Vpompa_21Vfc = 0 - 217.1mm
+
+10Vpompa_10Vfc = 0 - 5.25mm
+10Vpompa_12Vfc = 0 - 5mm
+10Vpompa_15Vfc = 0 - 199mm
+10Vpompa_18Vfc = 0 - 225.2mm (full tank, mati karena level switch)
+10Vpompa_21Vfc = 0 - 224.1mm (full tank, mati karena level switch)
+
+update 09/05/2023
+10Vpompa_16Vfc = 224.8 mm
+10Vpompa_12.5Vfc = ? Manual drain dibuka full
+10Vpompa_13Vfc = ? Manual drain dibuka full
+10Vpompa_13.5Vfc = ? Manual drain dibuka full
+10Vpompa_14Vfc = ? Manual drain dibuka full
+10Vpompa_14.5Vfc = ? Manual drain dibuka full
+10Vpompa_15.5Vfc = ? Manual drain dibuka full
+10Vpompa_17Vfc = ? Manual drain dibuka full
+10Vpompa_19Vfc = ? Manual drain dibuka full
+10Vpompa_20Vfc = ? Manual drain dibuka full

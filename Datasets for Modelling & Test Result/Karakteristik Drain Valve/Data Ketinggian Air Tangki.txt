@@ -1,0 +1,40 @@
+DATA KETINGGIAN DIAMBIL SECARA VISUAL DENGAN PENGGARIS
+
+10Vpompa_22Vfc_10Vdrain = 0 - 148.3mm
+10Vpompa_22Vfc_8Vdrain = 0 - 153.8mm
+10Vpompa_22Vfc_6Vdrain = 0 - 205mm
+10Vpompa_22Vfc_4Vdrain = 0 - 224.15mm (drain valve mati total, ada saat level switch nyala)
+10Vpompa_22Vfc_2Vdrain = 0 - 224.15mm (drain valve mati total, ada saat level switch nyala)
+
+10Vpompa_18Vfc_10Vdrain = 0 - 138.5mm
+10Vpompa_18Vfc_8Vdrain = 0 - 149.65mm
+10Vpompa_18Vfc_6Vdrain = 0 - 193mm
+10Vpompa_18Vfc_4Vdrain = 0 - 224.8mm (drain valve mati total, ada saat level switch nyala)
+10Vpompa_18Vfc_2Vdrain = 0 - 224.6mm (drain valve mati total, ada saat level switch nyala)
+
+10Vpompa_14Vfc_10Vdrain = 0 - 80.5mm
+10Vpompa_14Vfc_8Vdrain = 0 - 91.2mm
+10Vpompa_14Vfc_6Vdrain = 0 - 123.8mm
+10Vpompa_14Vfc_4Vdrain = 0 - 167.4mm (drain valve mati total)
+10Vpompa_14Vfc_2Vdrain = 0 - 165.6mm (drain valve mati total)
+
+10Vpompa_15Vfc_10Vdrain = 0 - 107.5mm
+10Vpompa_15Vfc_8Vdrain = 0 - 119.2mm
+10Vpompa_15Vfc_6Vdrain = 0 - 154.8mm
+10Vpompa_15Vfc_4Vdrain = 0 - 208.9mm (drain valve mati total)
+10Vpompa_15Vfc_2Vdrain = 0 - 208.2mm (drain valve mati total)
+
+10Vpompa_13Vfc_10Vdrain = 0 - 51.55mm (pressure switch nyala mati, osilasi)
+
+10Vpompa_16Vfc_10Vdrain = 0 - 134.6mm
+10Vpompa_16Vfc_8Vdrain = 0 - 133.9mm
+10Vpompa_16Vfc_6Vdrain = 0 - 178.15mm
+10Vpompa_16Vfc_4Vdrain = 0 - 224.5mm 
+10Vpompa_16Vfc_2Vdrain = 0 - 224.6mm (drain valve mati total, ada saat level switch nyala)
+
+8Vpompa_22Vfc_10Vdrain = 0 - 134.65mm
+6Vpompa_22Vfc_10Vdrain = 0 - 100mm
+4Vpompa_22Vfc_10Vdrain = 0 - 58.6mm
+2Vpompa_22Vfc_10Vdrain = 0 - 33.5mm
+
+

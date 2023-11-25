@@ -1,0 +1,5 @@
+pengujian ini dilakukan dengan timelapse berikut.
+1. ramp start 3 detik dari void setup int main (mulai ramp dari diff=3000ms)
+2. ramp akan terus naik selama 60s (hingga stuck di 10VDC saat diff=3000+60000=63000ms)
+3. ramp akan steady saat berada pada 10VDC selama 3 detik (hingga diff=66000ms)
+4. ramp akan terus turun hingga 0VDC, dan sd card stm akan eject/unmount pada 135000ms
