@@ -1,0 +1,4 @@
+cd /d D:\
+dir
+
+pip install --upgrade pip
