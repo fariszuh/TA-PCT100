@@ -1,0 +1,66 @@
+function u = fcn(e, e_1, e_2, lr_init, alpha)
+    % initial condition
+    persistent w_input v_hidden y_hidden delta2 hj ei_1 ei_2  lr n
+    persistent v_hidden2 delta2_1 hj1
+    if isempty(w_input)
+%         w_input = zeros(3,3);
+        w_input = rand(3,3);
+        n = 0;
+    end
+    if isempty(v_hidden)   
+%         v_hidden = zeros(1,3);
+        v_hidden = rand(1,3);
+%         v_hidden2 = rand(1,3);
+    end
+    if isempty(delta2)
+        delta2 = zeros(1,3);
+%         delta2_1 = zeros(1,3);
+    end
+    if isempty(hj)
+        hj = [0;0;0];
+        hj1 = [0;0;0];
+    end
+    if isempty(ei_1)
+        ei_1 = 0;
+    end
+    if isempty(ei_2)
+        ei_2 = 0;
+    end
+    if isempty(lr)
+        lr = lr_init;
+    end
+    ei = e;
+    x_input = [ei; ei_1; ei_2];
+    % FORWARD PROPAGATION
+    % Input layer to hidden layer
+    for j_hiddenLayer = 1:3
+        Sj = w_input(j_hiddenLayer,:) * x_input; % summing hidden neuron ke-j
+        hj(j_hiddenLayer) = 1/(1 + exp(-1*Sj));
+    end
+    
+    % hidden layer to output layer
+    r = v_hidden * hj;
+    u = 1/(1+exp(-1*r));
+
+    % BACKWARD PROPAGATION: RETROPROPAGATION
+%     alpha = 0.006;
+    lr = lr + alpha*(ei)
+%     lr = 20.6;
+%     MSE = 0.5*(e_1^2)
+    delta1 = ei*u*(1-u);
+%     dey_deu = sign(ei);
+    dey_deu =   1; %sign(ei);
+    for j_hiddenLayer = 1:3
+        v_hidden(j_hiddenLayer) = v_hidden(j_hiddenLayer) + lr * dey_deu * delta1 * hj(j_hiddenLayer);
+        delta2(j_hiddenLayer) = delta1 * v_hidden(j_hiddenLayer) * hj(j_hiddenLayer) * (1 - hj(j_hiddenLayer));
+        
+        for i_inputLayer = 1:3
+            w_input(j_hiddenLayer,i_inputLayer) = w_input(j_hiddenLayer,i_inputLayer) + lr * dey_deu * delta2(j_hiddenLayer) * x_input(i_inputLayer);
+        end
+    end
+    
+    ei_2 = ei_1;
+    ei_1 = ei;
+    w_input;
+    v_hidden;
+    n = n + 1;
