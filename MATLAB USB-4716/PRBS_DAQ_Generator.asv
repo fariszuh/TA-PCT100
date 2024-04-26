@@ -1,0 +1,24 @@
+
+arr_volt = [];
+
+peak_volt = 10;
+
+arr_time = [];
+start_time = 0;
+end_delay = 0;
+
+for timenow = 0:0.5:10 %
+    volt = 10;
+
+    if timenow > (start_time + stop_time)
+        volt = 0;
+    else 
+        volt = 24;
+    end
+    
+end
+    arr_volt = [arr_volt, volt];
+    arr_time = [arr_time, t];
+end
+
+plot(arr_time,arr_i)

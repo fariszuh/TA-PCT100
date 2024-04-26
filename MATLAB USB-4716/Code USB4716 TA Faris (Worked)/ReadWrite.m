@@ -70,6 +70,8 @@ function [flow, level] = TimerCallback(obj, event, instantAiCtrl, startChannelAi
     global arr_flow arr_level arr_time;    
     errorCode = instantAiCtrl.Read(startChannelAi, channelCountAi, data); 
 %     kontroller(); 
+    
+    
     errorCode2 = instantAoCtrl.Write(0,1,VoltAO0);
     errorCode3 = instantAoCtrl.Write(1,1,VoltAO1);
     
